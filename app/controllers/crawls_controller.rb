@@ -1,6 +1,6 @@
 class CrawlsController < ApplicationController
   before_action :set_crawl, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index] #maybe an except here for landing page.
   # GET /crawls
   # GET /crawls.json
   def index
