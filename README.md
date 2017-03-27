@@ -1,1 +1,1 @@
-HoppyCrawl is a Brewery-Crawl app created by Jenn, Alex, Noor, Gerardo, Ashley, and Erik 
+HoppyCrawl is a Brewery-Crawl app created by Jenn, Erik, Noor, Gerardo, Ashley, and Alex  
