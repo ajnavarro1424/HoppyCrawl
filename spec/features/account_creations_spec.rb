@@ -22,7 +22,7 @@ RSpec.feature "AccountCreations", type: :feature do
       end
     end
   end
-
+  # Over 21 validation added to the User model
   context "Attempting to Make an Account" do
     Steps "Making an account with invalid age" do
       Given "The user is on the landing page" do
