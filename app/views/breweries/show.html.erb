@@ -16,8 +16,23 @@
 </p>
 
 <p>
+  <strong>Hours:</strong>
+  <%= @brewery.hours %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @brewery.phone_number %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @brewery.description %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @brewery.rating %>
 </p>
 
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
