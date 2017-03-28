@@ -1,6 +1,6 @@
 class CrawlsController < ApplicationController
   before_action :set_crawl, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :landing_page] #maybe an except here for landing page.
   # GET /crawls
   # GET /crawls.json
   def index
@@ -60,6 +60,7 @@ class CrawlsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
