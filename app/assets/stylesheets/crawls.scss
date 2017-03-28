@@ -2,7 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#crawl_map {
-  height: 500px;
-  width: 500px;
+.three-p{
+  text-align: center;
+  padding-top: 300px;
+}
+
+#hoptoit{
+  text-align: center;
+  padding-top: 200px;
+}
+
+footer{
+  text-align: center;
+  padding-top: 100px;
+}
+
+#socialicons{
+  align-items: right;
+  padding-top: 10px;
 }
