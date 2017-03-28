@@ -19,21 +19,21 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav"></ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Sign In</a></li>
-            <li><a href="#">Log In</a></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Log In', new_user_session_path %></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
   </div>
 </div>
-
+<p id="notice"><%= notice %></p>
 <br>
 <div class="row" id="hoptoit">
   <div class="col-md-12">
     <h3>HOP TO IT!</h3>
     <form action="/" method="get">
-      <input type="text" name="search" placeholder="Enter Zip Code">
+      <input type="text" placeholder="Enter Zip Code">
       <input type="submit" value="Crawl">
     </form>
   </div>
@@ -45,8 +45,7 @@
 
       <!-- <img src="#"> --><i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
       <h4>plot</h4>
-      <p>Lorem ipsum dolor sit amet, fugit vestibulum, lacinia quam, vestibulum mauris integer feugiat, nunc sapien ut is tincidunt lacus lobortis amet tellus. Nonummy tincidunt ligula sed pede sociosqu hendrerit. Suscipit vel non, turpis dapibus arcu libero mi morbi vel. Porro ac in massa nec, molestie ac nunc vestibulum, libero etiam aliquam.
-</p>
+      <p>Bring the adventure right to your fingertips. Randomly generate a beer crawl regardless of your location!  </p>
     </div>
   </div>
   <div class="col-md-4">
@@ -54,14 +53,14 @@
       <!-- <img src="#"> --><i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
 
       <h4>plan</h4>
-      <p>am, porro donec sed. Sed elit, sapien tempus suscipit dapibus sit aliquam sagittis, sagittis erat, cras elit, lorem vel. Gravida vitae justo amet at gravida, non massa sit curabitur condimentum m ac tempor massa, porta in suspendisse massa morbi dolor. Ut consequat ut. Vel mollis lobortis dis rutrum adipiscing eros, sit volutpat mi erat. Duis justo mattis, maur</p>
+      <p>Edit, share, and rate your favorite crawls with your friends! Keep in touch with your favorite breweries, and keep up to date on all new beer releases!</p>
     </div>
   </div>
   <div class="col-md-4">
     <div class="three-p">
       <!-- <img src="#"> --> <i class="fa fa-users fa-5x" aria-hidden="true"></i>
       <h4>party</h4>
-      <p>i. Sed morbi vel pellentesque maecenas posuere, mi a leo diam velit id, tincidunt id neque lacus vehicula rhoncus, in tortor consequat. Nunc wisi aenean sit magnis phasellus tellus, ligula vestibulum aliquam viverra augue dolor lacus, cras</p>
+      <p>Hop to it and get your crawl on! Grab your best friends, get out, and explore your city the beer way. </p>
     </div>
   </div>
 </div>
