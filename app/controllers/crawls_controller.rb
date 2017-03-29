@@ -1,6 +1,6 @@
 class CrawlsController < ApplicationController
   before_action :set_crawl, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :landing_page] #maybe an except here for landing page.
+  before_action :authenticate_user!, except: [:index, :landing_page, :age_verified] #maybe an except here for landing page.
   # GET /crawls
   # GET /crawls.json
   def index
@@ -61,9 +61,9 @@ class CrawlsController < ApplicationController
     end
   end
 
-  def modalCheck
+  def age_verified
     cookies[:accepted] = true
-    redirect_to '/'
+    redirect_to root_path
   end
 
   private
