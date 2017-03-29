@@ -1,6 +1,7 @@
 $(document).ready(function(){
-  $('#yesButton').on("click", function(e) {
+  $('body').on("click", "#yesButton", function(e) {
    e.preventDefault();
+  console.log("hi");
     $('#myModal').hide();
   });
 });

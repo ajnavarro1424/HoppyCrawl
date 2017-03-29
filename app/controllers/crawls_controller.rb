@@ -61,6 +61,10 @@ class CrawlsController < ApplicationController
     end
   end
 
+  def modalCheck
+    cookies[:accepted] = true
+    redirect_to '/'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

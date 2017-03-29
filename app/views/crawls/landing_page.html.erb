@@ -1,14 +1,24 @@
 
-<div id="myModal" class="modal">
+<% if cookies[:accepted].blank? %>
+  <div id="myModal" class="modal">
 
- <div class="modal-content">
-   <i class="fa fa-beer fa-5x" aria-hidden="true"></i>
-    <p>Are you 21 or over?</p>
-  <input type="button" onclick="location.href='https://www.youtube.com/watch?v=6-HUgzYPm9g';" value="NO">
-  <input id="yesButton" type="button"  value="YES!">
+    <div class="modal-content">
+      <i class="fa fa-beer fa-5x" aria-hidden="true"></i>
+      <p>Are you 21 or over?</p>
+      <div class="row">
+        <div class="col-md-2 col-md-offset-4">
+          <input type="button" onclick="location.href='https://www.youtube.com/watch?v=6-HUgzYPm9g';" value="NO">
+        </div>
+        <div class="col-md-2">
+          <form  action="/crawls/modalCheck" method="GET">
+            <input id="yesButton" type="button" name="accepted" value="YES!">
+          </form>
+        </div>
+      </div>
+    </div>
+  <!-- link_to "I accept", :controller => 'welcome', :action => 'accept_and_redirect' -->
   </div>
-
-</div>
+<%end%>
 
 
 <div class="row">
