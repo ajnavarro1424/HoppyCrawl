@@ -45,6 +45,14 @@ gem 'underscore-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+#Google Maps Gems
+gem 'underscore-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
+
+#Emails Capybara Gems
+gem 'capybara-email'
+
 group :test do
   gem 'capybara'
   gem 'rspec-example_steps'
@@ -57,6 +65,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'chromedriver-helper'
+  gem 'dotenv-rails'
 end
 
 group :development do
