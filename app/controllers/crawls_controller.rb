@@ -24,7 +24,9 @@ class CrawlsController < ApplicationController
   # POST /crawls
   # POST /crawls.json
   def create
-    @crawl = Crawl.new(crawl_params)
+    @crawl = Crawl.new
+    @crawl.address = params[:address]
+    @crawl.user_id = current_user.id if user_signed_in?
 
     respond_to do |format|
       if @crawl.save
@@ -66,6 +68,16 @@ class CrawlsController < ApplicationController
     redirect_to root_path
   end
 
+  def map_location
+    @crawl = Crawl.find(params[:crawl_id])
+    @hash = Gmaps4rails.build_markers(@crawl) do |crawl, marker|
+      marker.lat(crawl.latitude)
+      marker.lng(crawl.longitude)
+      marker.infowindow("<em>" + crawl.address + "</em><br>Remove this marker one day plz!!")
+    end
+    render json: @hash.to_json
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_crawl
@@ -74,6 +86,6 @@ class CrawlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crawl_params
-      params.require(:crawl).permit(:name)
+      params.require(:crawl).permit(:name, :address)
     end
 end

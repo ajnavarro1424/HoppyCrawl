@@ -1,9 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @crawl.name %>
+  <strong>Address:</strong>
+  <%= @crawl.address %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= user_signed_in? ? User.find(@crawl.user_id).email : "N/A" %>
 </p>
 
 <%= link_to 'Edit', edit_crawl_path(@crawl) %> |
 <%= link_to 'Back', crawls_path %>
+
+<div id="crawl_map" data-crawl-id="<%=@crawl.id%>">
+  One day there will be a map here...
+</div>
