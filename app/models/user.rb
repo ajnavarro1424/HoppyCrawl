@@ -5,10 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :crawls
   # Validators for dob during account creation
+  validates :dob, presence: true
   validate :age_not_less_than_21
 
   def age_not_less_than_21
-    if self.dob + 21.year >= Date.today
+    if self.dob && self.dob + 21.year >= Date.today
       errors.add(:dob, ": Ages under 21 not permitted")
 
     end
