@@ -47,8 +47,11 @@
             <% else %>
             <li><%= link_to 'Sign Up', new_user_registration_path %></li>
             <li><%= link_to 'Log In', new_user_session_path %></li>
+              <%if can? :manage, :all %>
+              <li><%= link_to 'Breweries', breweries_path%></li>
+              <li><%= link_to 'Crawls', crawls_path %></li>
+              <%end%>
             <% end %>
-
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

@@ -1,14 +1,45 @@
 require 'rails_helper'
+require 'cancan/matchers'
 
-RSpec.feature "Breweries", type: :feature do
-  context "clicking on new brewery" do
-    Steps "for creating a new brewey listing" do
-      Given "that I am on the brewery landing page" do
+RSpec.feature "Breweries As Admin", type: :feature do
+  context "Logging in as an admin" do
+    Steps "for logging in as an admin" do
+      Given "A user with email ghamedina@gmail.com  and password 123456" do
+        user = User.create!(email: "ghamedina@gmail.com", password: "123456", dob: "1987-05-12" )
+        user.add_role :admin
+        # sign_in(user) can use this instead of line 14-30
+      end
+      Given "The user is on the landing page" do
+        visit '/'
+        click_link 'Log In'
+      end
+      When "I enter my information" do
+        fill_in 'Email', with: 'ghamedina@gmail.com'
+        fill_in 'Password', with: '123456'
+        click_button 'Log in'
+      end
+      And "I am redirected to the landing page" do
+        expect(page).to have_content '21'
+        expect(page).to have_content 'or'
+        #once our modal has been fixed, change 21 to Breweries, and or to Crawl
+      end
+      And "I click the yes button" do
+        click_button 'YES'
+      end
+      And "I expect to see landing page" do
+        visit '/'
+        expect(page).to have_content 'HOP TO IT'
+      end
+      And "I click Breweries link" do
+        expect(page).to have_content 'Breweries'
+        click_link 'Breweries'
+      end
+      And "that I am on the brewery landing page" do
         visit '/breweries'
         click_link 'New Brewery'
         expect(page).to have_content 'New Brewery'
       end
-      When "I enter my information" do
+      And "I enter my information" do
         fill_in 'Name', with: 'Brewery_1'
         fill_in 'Address', with: '701 J street'
         fill_in 'Website', with: 'test.com'
@@ -18,22 +49,14 @@ RSpec.feature "Breweries", type: :feature do
         fill_in 'Rating', with: '3.4'
         click_button 'Create Brewery'
       end
-      Then "I am taken to a page that shows the new brewery added" do
+      And "I am taken to a page that shows the new brewery added" do
         expect(page).to have_content 'Brewery was successfully created.'
         expect(page).to have_content '868-010-9221'
       end
-    end
-  end
-
-  context "Editing a Brewery" do
-    Steps "for editing the Brewery information" do
-      Given "I click on edit link" do
-        create_brewery
-        visit "/breweries"
-        expect(page).to have_content 'test.com'
+      And "I click on edit link" do
         click_link "Edit"
       end
-      When "I edit information on Edit page" do
+      And "I edit information on Edit page" do
         fill_in 'Name', with: 'Brewery_1'
         fill_in 'Address', with: '701 J street'
         fill_in 'Website', with: 'test.com'
@@ -43,42 +66,45 @@ RSpec.feature "Breweries", type: :feature do
         fill_in 'Rating', with: '3'
         click_button "Update Brewery"
       end
-      Then "I expect to see my edited Brewery" do
+      And "I expect to see my edited Brewery" do
         expect(page).to have_content '7-7'
         expect(page).to have_content '3'
+        click_link 'Back'
       end
-    end
-  end
-
-  context "Destroying a Brewery" do
-    Steps "for destroying the Brewery" do
-      Given "I have a brewery on the Breweries page" do
-        create_brewery
-        visit "/breweries"
+      And "I have a brewery on the Breweries page" do
         expect(page).to have_content 'test.com'
       end
-      When "I click on the destroy link" do
+      And "I click on the destroy link" do
         click_link "Destroy"
       end
-      Then "The Brewery will be destroyed" do
+      And "The Brewery will be destroyed" do
         expect(page).to have_content 'Brewery was successfully destroyed.'
+        # expect(page).to_not have_content 'test.com'
+      end
+      And "I am on the Breweries page" do
+        # create_brewery
+        # visit "/breweries"
         expect(page).to_not have_content 'test.com'
       end
     end
   end
 
-  context "Showing Brewery info" do
-    Steps "for showing Brewery info" do
-      Given "I am on the Breweries page" do
-        create_brewery
-        visit "/breweries"
-        expect(page).to have_content 'test.com'
+  context "Logging in as a non Admin user" do
+    Steps "for logging in as a non Admin user" do
+      Given "A user with email ghamedina@gmail.com  and password 123456" do
+        user = User.create!(email: "ghamedina@gmail.com", password: "123456", dob: "1987-05-12" )
+        login_as(user, :scope => :user)
       end
-      When "I click on the show link" do
-        click_link "Show"
+      And "I expect to see landing page" do
+        visit '/'
+        expect(page).to have_content 'HOP TO IT'
       end
-      Then "I am taken to the show page for that Brewery" do
-        expect(page).to have_content 'Rating: 5'
+      And "I cannot see Breweries link" do
+        expect(page).to_not have_content 'Breweries'
+      end
+      And "I cannot access Breweries page at all" do
+        visit '/breweries'
+        expect(page).to have_content "You are not authorized to access this page."
       end
     end
   end

@@ -36,6 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'cancancan'
+gem 'rolify'
+
 
 #Google Maps Gems
 gem 'underscore-rails'

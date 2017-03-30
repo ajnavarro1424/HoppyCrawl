@@ -1,10 +1,13 @@
 class CrawlsController < ApplicationController
   before_action :set_crawl, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :landing_page, :age_verified] #maybe an except here for landing page.
+  load_and_authorize_resource except: [:index, :landing_page, :age_verified]
   # GET /crawls
   # GET /crawls.json
   def index
     @crawls = Crawl.all
+    @ability = Ability.new(current_user)    # add this line
+
   end
 
   # GET /crawls/1
