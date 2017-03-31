@@ -46,6 +46,7 @@ gem 'underscore-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+
 group :test do
   gem 'capybara'
   gem 'rspec-example_steps'
