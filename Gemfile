@@ -40,18 +40,11 @@ gem 'cancancan'
 gem 'rolify'
 
 
-#Google Maps Gems
-gem 'underscore-rails'
-gem 'geocoder'
-gem 'gmaps4rails'
 
 #Google Maps Gems
 gem 'underscore-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
-
-#Emails Capybara Gems
-gem 'capybara-email'
 
 group :test do
   gem 'capybara'
@@ -66,6 +59,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'chromedriver-helper'
   gem 'dotenv-rails'
+  gem 'capybara-email'
 end
 
 group :development do
