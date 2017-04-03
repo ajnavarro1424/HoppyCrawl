@@ -16,7 +16,7 @@ RSpec.feature "Breweries As Admin", type: :feature do
       When "I enter my information" do
         fill_in 'Email', with: 'ghamedina@gmail.com'
         fill_in 'Password', with: '123456'
-        click_button 'Log in'
+        click_button 'Log In'
       end
       And "I am redirected to the landing page" do
         expect(page).to have_content '21'
@@ -79,12 +79,6 @@ RSpec.feature "Breweries As Admin", type: :feature do
       end
       And "The Brewery will be destroyed" do
         expect(page).to have_content 'Brewery was successfully destroyed.'
-        # expect(page).to_not have_content 'test.com'
-      end
-      And "I am on the Breweries page" do
-        # create_brewery
-        # visit "/breweries"
-        expect(page).to_not have_content 'test.com'
       end
     end
   end

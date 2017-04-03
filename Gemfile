@@ -40,7 +40,6 @@ gem 'cancancan'
 gem 'rolify'
 
 
-
 #Google Maps Gems
 gem 'underscore-rails'
 gem 'geocoder'

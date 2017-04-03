@@ -3,6 +3,5 @@ class Crawl < ApplicationRecord
 	after_validation :geocode
 	belongs_to :user
 	resourcify
-	validates :user, presence: true # add this
-
+	validates :user, presence: true
 end

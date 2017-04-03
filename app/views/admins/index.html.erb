@@ -17,11 +17,11 @@
       <td>
         <%if user.has_role?(:admin)%>
           <%= form_tag("/admins/" + user.id.to_s + "?role=user", method: :PUT) do %>
-            <input type="submit" value="Remove Admin"/>
+            <input id="remove_admin_<%=user.id.to_s%>" type="submit" value="Remove Admin"/>
           <% end %>
         <%else%>
           <%= form_tag("/admins/" + user.id.to_s + "?role=admin", method: :PUT) do %>
-            <input type="submit" value="Make Admin"/>
+            <input id="make_admin_<%=user.id.to_s%>" type="submit" value="Make Admin"/>
           <% end %>
         <% end %>
       </td>
