@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  resources :brewery_stops
 
   root 'crawls#landing_page'
   get '/crawls/age_verified' => 'crawls#age_verified'

@@ -1,13 +1,14 @@
 class CrawlsController < ApplicationController
   before_action :set_crawl, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :landing_page, :age_verified] #maybe an except here for landing page.
-  load_and_authorize_resource except: [:index, :landing_page, :age_verified, :show, :create, :map_location] #need non-admins to both create and show crawls
 
+  load_and_authorize_resource except: [:index, :landing_page, :age_verified, :show, :create, :map_location, :update] #need non-admins to both create and show crawls
+  
   # GET /crawls
   # GET /crawls.json
   def index
     @crawls = Crawl.all
-    @ability = Ability.new(current_user)    
+    @ability = Ability.new(current_user)
   end
 
   # GET /crawls/1
@@ -89,6 +90,6 @@ class CrawlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crawl_params
-      params.require(:crawl).permit(:name, :address) #this won't work if show and create are not in load_and_authorize_resource
+      params.require(:crawl).permit(:name, :address, :start_time, :end_time, :brewery_stops, brewery_stops_attributes: [:start_time, :end_time, :id, :brewery_id, :crawl_id]) #this won't work if show and create are not in load_and_authorize_resource
     end
 end
