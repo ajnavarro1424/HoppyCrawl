@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:dob])
+
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:dob])
   end
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|

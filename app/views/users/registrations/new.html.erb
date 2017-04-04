@@ -10,7 +10,7 @@
 
   <div class="field">
     <%= f.label :dob %><br>
-    <%=f.date_select :dob, start_year: 1945 %>
+    <%=f.date_select :dob, start_year: Date.today.year - 116, end_year: Date.today.year - 21 %>
   </div>
 
   <div class="field">
