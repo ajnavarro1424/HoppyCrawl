@@ -47,7 +47,7 @@ RSpec.feature "CreateCrawlsV2s", type: :feature do
         select "2016", :from => "crawl_brewery_stops_attributes_0_end_time_1i"
         click_button 'Update Crawl'
       end
-      Then "The end time has changed" do
+      Then "The end time has changed" do 
         expect(page).to have_content("2016")
       end
     end

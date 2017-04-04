@@ -1,0 +1,37 @@
+<%= form_for(brewery_stop) do |f| %>
+  <% if brewery_stop.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(brewery_stop.errors.count, "error") %> prohibited this brewery_stop from being saved:</h2>
+
+      <ul>
+      <% brewery_stop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_time %>
+    <%= f.datetime_select :start_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_time %>
+    <%= f.datetime_select :end_time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :brewery_id %>
+    <%= f.text_field :brewery_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :crawl_id %>
+    <%= f.text_field :crawl_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
