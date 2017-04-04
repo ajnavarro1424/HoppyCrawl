@@ -31,6 +31,7 @@ RSpec.configure do |config|
     # ...rather than:
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
@@ -98,4 +99,6 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  #to include our macro (mock infomation for testing)
+
 end

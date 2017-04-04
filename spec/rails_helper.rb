@@ -60,3 +60,5 @@ RSpec.configure do |config|
   config.include BreweryFeatures, :type => :feature
   config.include AdminFeatures, :type => :feature
 end
+
+  OmniAuth.config.test_mode = true

@@ -14,9 +14,9 @@ RSpec.feature "Breweries As Admin", type: :feature do
         click_link 'Log In'
       end
       When "I enter my information" do
-        fill_in 'Email', with: 'ghamedina@gmail.com'
-        fill_in 'Password', with: '123456'
-        click_button 'Log In'
+      fill_in 'Email', with: 'ghamedina@gmail.com'
+      fill_in 'Password', with: '123456'
+      click_button 'Log In'
       end
       And "I am redirected to the landing page" do
         expect(page).to have_content '21'
