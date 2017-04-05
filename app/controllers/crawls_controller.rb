@@ -3,7 +3,7 @@ class CrawlsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :landing_page, :age_verified] #maybe an except here for landing page.
 
   load_and_authorize_resource except: [:index, :landing_page, :age_verified, :show, :create, :map_location, :update] #need non-admins to both create and show crawls
-  
+
   # GET /crawls
   # GET /crawls.json
   def index
@@ -33,7 +33,10 @@ class CrawlsController < ApplicationController
     @crawl.user_id = current_user.id if user_signed_in?
 
     respond_to do |format|
-      if @crawl.save
+      if @crawl.invalid_address
+        format.html { redirect_back(fallback_location: root_path, notice: 'Please enter a valid address!') }
+        format.json { render json: @crawl.errors, status: :unprocessable_entity }
+      elsif @crawl.save
         format.html { redirect_to @crawl, notice: 'Crawl was successfully created.' }
         format.json { render :show, status: :created, location: @crawl }
       else
@@ -41,6 +44,7 @@ class CrawlsController < ApplicationController
         format.json { render json: @crawl.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /crawls/1

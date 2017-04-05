@@ -1,22 +1,24 @@
 require 'rails_helper'
 
 RSpec.feature "EnterAddressForCrawls", type: :feature do
+  before(:each) do
+    User.destroy_all
+    User.create!(email: "bob@bob.com", password: "bobpassword", dob: "1987-05-12" )
+    visit '/'
+  end
+
   context "As a logged in user I can enter an address to generate a map" do
     Steps "See above" do
-      Given "A user with email bob@bob.com and password bobpassword" do
-        User.create!(email: "bob@bob.com", password: "bobpassword", dob: "1987-05-12" )
+      Given "I am on the landing page" do
+        expect(page).to have_content("HOP TO IT!")
       end
-      Given "I am a logged in user" do
-        visit '/'
+      And "I log in" do
         click_link 'Log In'
-      end
-      When "I enter in my login credentials" do
         fill_in 'Email', with: 'bob@bob.com'
         fill_in 'Password', with: 'bobpassword'
         click_button 'Log In'
       end
-      Then "I am on the landing page and can enter a street address" do
-        expect(page).to have_content("HOP TO IT!")
+      When "I enter a street address and generate a crawl" do
         fill_in "address", with: "704 J Street San Diego, CA 92101"
         click_button "Crawl"
       end
@@ -28,13 +30,6 @@ RSpec.feature "EnterAddressForCrawls", type: :feature do
 
   context "As a non-logged-in user, I will be prompted to log in before I create a crawl" do
     Steps "See Above" do
-      Given "I am a user with email bob@bob.com and password bobpassword" do
-        User.create!(email: "bob@bob.com", password: "bobpassword", dob: "1987-05-12" )
-      end
-      And "I'm on the landing page" do
-        visit '/'
-        expect(page).to have_content("HOP TO IT!")
-      end
       When "I enter a street address and generate a crawl" do
         fill_in "address", with: "704 J Street San Diego, CA 92101"
         click_button "Crawl"

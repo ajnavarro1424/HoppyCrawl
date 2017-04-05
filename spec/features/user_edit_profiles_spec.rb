@@ -7,7 +7,6 @@ RSpec.feature "UserEditProfiles", type: :feature do
         @user = create_user
         login_as(@user, :scope => :user)
         visit '/'
-        # save_and_open_page
       end
       And "User can click_link Profile" do
         click_link 'Profile'
