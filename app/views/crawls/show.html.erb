@@ -31,7 +31,7 @@
 <%= form_for @crawl do |f| %>
 <div id="crawl_location" data-crawl-lat='<%=@crawl.latitude%>' data-crawl-long='<%=@crawl.longitude%>'>
   <%= f.fields_for :brewery_stops, @crawl.brewery_stops do |bs_form| %>
-    <div class='brewery_stop' data-lat='<%= bs_form.object.brewery.latitude %>' data-long='<%= bs_form.object.brewery.longitude %>'>
+    <div class='brewery_stop' data-lat='<%= bs_form.object.brewery.latitude %>' data-long='<%= bs_form.object.brewery.longitude %>' data-name='<%= bs_form.object.brewery.name %>' data-website='<%= bs_form.object.brewery.website %>' data-description='<%= bs_form.object.brewery.description %>'>
       <%= bs_form.hidden_field :brewery_id %>
       <%= bs_form.hidden_field :crawl_id %>
       <h5><%= bs_form.object.brewery.name %></h5>
@@ -43,5 +43,6 @@
     <br>
     <br>
     <%= f.submit %>
+  </div>
 </div>
 <% end %>

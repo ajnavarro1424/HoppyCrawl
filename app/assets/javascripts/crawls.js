@@ -20,7 +20,7 @@ function loadAndCreateGMap() {
 
     infoWindow = new google.maps.InfoWindow();
     $(".brewery_stop").each(function () {
-      createMarker({'latitude': $(this).data("lat"), 'longitude': $(this).data("long"), 'name': "Your moms house", 'website': 'http://google.com'})
+      createMarker({'latitude': $(this).data("lat"), 'longitude': $(this).data("long"), 'name': $(this).data("name"), 'website': $(this).data("website"), 'description': $(this).data("description")})
     })
   }
 }
@@ -36,7 +36,18 @@ function createMarker(place){
 
       //adds a click listener to the map so that when a user clicks on it, something will happen
       google.maps.event.addListener(marker, 'click', function() {
-        infoWindow.setContent("<a href='"+ place.website +"'>"+place.name+"</a>"); //sets the content of the infoWindow (the small pop-up when you click a marker) to the name of the place and the website it belongs to
+        var iWindowStr = ""
+        if(place.website.length>0){
+          iWindowStr+="<a href='"+ place.website +"'>"+place.name+"</a>"; //sets the content of the infoWindow (the small pop-up when you click a marker) to the name of the place and the website it belongs to
+        }
+        else {
+            iWindowStr+=place.name
+        }
+        if(place.description.length>0){
+          iWindowStr+="<br>---------------<br>"
+          iWindowStr+=place.description
+        }
+        infoWindow.setContent(iWindowStr)
         infoWindow.open(map, this); //makes the infoWindow open when clicked
       })
     }
