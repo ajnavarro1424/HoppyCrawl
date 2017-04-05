@@ -1,6 +1,6 @@
 class Crawl < ApplicationRecord
 	geocoded_by :address
-	after_validation :geocode
+	before_validation :geocode
 	belongs_to :user
 	# added for many-to-many relationship
 	has_many :brewery_stops
@@ -14,6 +14,10 @@ class Crawl < ApplicationRecord
 
 	accepts_nested_attributes_for :brewery_stops
 
+  def invalid_address
+		Geocoder.search(address).empty?
+	end
+
 	private
 		def add_brew_stops
 			breweries = Brewery.last(5)
@@ -25,4 +29,5 @@ class Crawl < ApplicationRecord
 				brewery_stops << bs
 			end
 		end
+
 end

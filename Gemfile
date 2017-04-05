@@ -52,6 +52,7 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'simplecov', :require => false
+  gem 'rails-controller-testing'
 end
 
 group :development, :test do

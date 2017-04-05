@@ -1,6 +1,30 @@
 require 'rails_helper'
 
 RSpec.describe Crawl, type: :model do
+
+
+  context "it has an address" do
+    it "knows when its address is invalid" do
+        c = Crawl.new
+        c.address = "Believe it or not, this is an invalid address."
+        expect(c.invalid_address).to be true
+    end
+
+    it "knows when its address is valid" do
+      c = Crawl.new
+      c.address = "1600 Pennsylvania Ave NW, Washington, DC 20500"
+      expect(c.invalid_address).to be false
+    end
+  end
+
+  context "it does not have an address" do
+
+    it "will still return true" do
+      c = Crawl.new
+      expect(c.invalid_address).to be true
+    end
+  end
+
   context "there are 5 breweries" do
     before(:each) do
       breweries = Brewery.create([{name: 'Mike Hess Brewing North Park', address: '3812 Grime Ave, San Diego, CA 92104',  latitude: 32.7496221, longitude: -117.1359937 }, {name: 'North Park Beer Company', address: '3038 Univeristy Ave, San Diego, CA 92104', latitude: 32.7494235, longitude: -117.1252649 }, {name: 'Belching Beaver North Park', address: '4223 30th St, San Diego, CA 92104', latitude: 32.7494235, longitude: -117.1252649 }, {name: 'ChuckAlek Biergarten', address: '3139 University Ave, San Diego, CA 92104', latitude: 32.7494235, longitude: -117.1252649 }, {name: 'Eppig Brewing', address: '3052 El Cajon Blvd, San Diego, CA 92104', latitude: 32.7494235, longitude: -117.1252649 }])

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Address:</strong>
   <%= @crawl.address %>
@@ -10,8 +8,22 @@
   <%= user_signed_in? ? User.find(@crawl.user_id).email : "N/A" %>
 </p>
 
+<br>
+
+
+<h4>Make Another Search</h4>
+<%= form_tag("/crawls/create") do %>
+<%= text_field_tag 'address', nil, placeholder: "Enter Location" %>
+<%= submit_tag 'New Crawl' %>
+<% end %>
+
+<br>
 <%= link_to 'Edit', edit_crawl_path(@crawl) %> |
 <%= link_to 'Back', crawls_path %>
+
+<br>
+<br>
+
 <div id="crawl_map" data-crawl-id="<%=@crawl.id%>">
   One day there will be a map here...
 </div>
