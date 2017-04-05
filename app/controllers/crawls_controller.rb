@@ -94,6 +94,6 @@ class CrawlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crawl_params
-      params.require(:crawl).permit(:name, :address, :start_time, :end_time, :brewery_stops, brewery_stops_attributes: [:start_time, :end_time, :id, :brewery_id, :crawl_id]) #this won't work if show and create are not in load_and_authorize_resource
+      params.require(:crawl).permit(:name, :address, :start_time, :end_time, :date, :brewery_stops, brewery_stops_attributes: [:start_time, :end_time, :id, :brewery_id, :crawl_id]) #this won't work if show and create are not in load_and_authorize_resource
     end
 end

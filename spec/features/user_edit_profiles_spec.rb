@@ -13,6 +13,7 @@ RSpec.feature "UserEditProfiles", type: :feature do
       end
       And "User is on Edit user page can change their name, dob, email, and password" do
         # Check user values to match initialization values
+        save_and_open_page
         expect(@user.name).to eq 'Test Testerson'
         expect(@user.email).to eq 'test@test.com'
         expect(@user.dob.to_s).to eq "1985-05-05"
@@ -23,7 +24,6 @@ RSpec.feature "UserEditProfiles", type: :feature do
         fill_in 'Email', with: 'change@change.com'
         fill_in 'Password', with: 'changepassword'
         fill_in 'Password confirmation', with:'changepassword'
-        fill_in 'Current password', with: '123456'
         click_button 'Update'
       end
       And 'Use goes back to landing page and sees content Your account has been updated successfully.' do
