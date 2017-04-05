@@ -14,17 +14,15 @@ class Crawl < ApplicationRecord
 
 	accepts_nested_attributes_for :brewery_stops
 
-	def add_brew_stops
-		breweries = Brewery.last(5)
+	private
+		def add_brew_stops
+			breweries = Brewery.last(5)
 
-		breweries.each do |b|
-			bs = BreweryStop.new
-			bs.brewery_id = b.id
-			bs.crawl_id = id
-			brewery_stops << bs
+			breweries.each do |b|
+				bs = BreweryStop.new
+				bs.brewery_id = b.id
+				bs.crawl_id = id
+				brewery_stops << bs
+			end
 		end
-	end
-
-
-
 end
