@@ -4,6 +4,7 @@ require 'rails_helper'
   context "Logging out of site" do
      Steps "For logged in user who wants to logout" do
        Given "A user with email bob@bob.com and password bobpassword" do
+         User.destroy_all
          User.create!(email: "bob@bob.com", password: "bobpassword", dob: "1987-05-12" )
        end
        Given "I am a logged in user" do

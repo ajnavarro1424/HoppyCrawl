@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Brewery Stops</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Brewery</th>
+      <th>Crawl</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @brewery_stops.each do |brewery_stop| %>
+      <tr>
+        <td><%= brewery_stop.start_time %></td>
+        <td><%= brewery_stop.end_time %></td>
+        <td><%= brewery_stop.brewery.name %></td>
+        <td><%= brewery_stop.crawl.address %></td>
+        <td><%= link_to 'Show', brewery_stop %></td>
+        <td><%= link_to 'Edit', edit_brewery_stop_path(brewery_stop) %></td>
+        <td><%= link_to 'Destroy', brewery_stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Brewery Stop', new_brewery_stop_path %>

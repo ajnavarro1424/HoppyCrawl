@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @brewery_stop.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @brewery_stop.end_time %>
+</p>
+
+<p>
+  <strong>Brewery:</strong>
+  <%= @brewery_stop.brewery.name %>
+</p>
+
+<p>
+  <strong>Crawl:</strong>
+  <%= @brewery_stop.crawl.address %>
+</p>
+
+<%= link_to 'Edit', edit_brewery_stop_path(@brewery_stop) %> |
+<%= link_to 'Back', brewery_stops_path %>
