@@ -38,15 +38,13 @@ function createMarker(place){
       google.maps.event.addListener(marker, 'click', function() {
         var iWindowStr = ""
         if(place.website.length>0){
-          iWindowStr+="<a href='"+ place.website +"'>"+place.name+"</a>"; //sets the content of the infoWindow (the small pop-up when you click a marker) to the name of the place and the website it belongs to
+          iWindowStr+="<a href='"+ place.website +"' target='_blank'>"+place.name+"</a>"; //sets the content of the infoWindow (the small pop-up when you click a marker) to the name of the place and the website it belongs to
         }
         else {
             iWindowStr+=place.name
         }
-        if(place.description.length>0){
-          iWindowStr+="<br>---------------<br>"
-          iWindowStr+=place.description
-        }
+        iWindowStr+="<br>---------------<br>"
+        iWindowStr+=place.address
         infoWindow.setContent(iWindowStr)
         infoWindow.open(map, this); //makes the infoWindow open when clicked
       })
