@@ -36,9 +36,17 @@ RSpec.describe Crawl, type: :model do
       expect{Crawl.new}.to_not raise_error
     end
 
-    it "has to generate five brewery_stops" do
+    it "cannot generate brewery_stops if it does not have an address and/or lat/lng" do
       crawl = Crawl.new
       crawl.user_id = User.first.id
+      crawl.save
+      expect(crawl.brewery_stops.length).to eq(0)
+    end
+
+    it "can generated up to five brewery_stops if at least its address is valid" do
+      crawl = Crawl.new
+      crawl.user_id = User.first.id
+      crawl.address = "North Park, San Diego"
       crawl.save
       expect(crawl.brewery_stops.length).to eq(5)
     end
@@ -46,6 +54,7 @@ RSpec.describe Crawl, type: :model do
     it "has to save the five brewery_stops it generates to the database" do
       crawl = Crawl.new
       crawl.user_id = User.first.id
+      crawl.address = "North Park, San Diego"
       crawl.save
       expect(BreweryStop.all.size).to eq(5)
     end
@@ -53,25 +62,37 @@ RSpec.describe Crawl, type: :model do
   #
   # context "there are less than 5 breweries" do
 
-    it "should not fail to save if there are not enough breweries" do
+    it "should not fail to save if there are not enough breweries in the database" do
       Brewery.destroy_all
       BreweryStop.destroy_all
       breweries = Brewery.create([{name: 'Mike Hess Brewing North Park', address: '3812 Grime Ave, San Diego, CA 92104',  latitude: 32.7496221, longitude: -117.1359937 }, {name: 'North Park Beer Company', address: '3038 Univeristy Ave, San Diego, CA 92104', latitude: 32.7494235, longitude: -117.1252649 }])
       # make a new crawl (unsaved)
       crawl = Crawl.new
       crawl.user_id = User.first.id
+      crawl.address = "North Park, San Diego"
       crawl.save
       expect(BreweryStop.all.size).to eq(2)
     end
-    it "should not fail to save if there are no breweries" do
+    it "should not fail to save if there are no breweries in the database" do
       Brewery.destroy_all
       BreweryStop.destroy_all
       # make a new crawl (unsaved)
       crawl = Crawl.new
       crawl.user_id = User.first.id
       # expect{crawl.add_brew_stops}.to_not raise_error
-      crawl.save
-      expect(BreweryStop.all.size).to eq(0)
+      crawl.address = "North Park, San Diego"
+      expect(crawl.save).to eq true
+    end
+    it "should not fail to save if there are no breweries in the radius of the search" do
+      Brewery.destroy_all
+      BreweryStop.destroy_all
+      # make a new crawl (unsaved)
+      crawl = Crawl.new
+      crawl.user_id = User.first.id
+      # expect{crawl.add_brew_stops}.to_not raise_error
+      crawl.address = "92111"
+      expect(crawl.save).to eq true
+      expect(crawl.brewery_stops.length).to eq(0)
     end
   end
 end
