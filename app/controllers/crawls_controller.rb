@@ -2,6 +2,7 @@ class CrawlsController < ApplicationController
   before_action :set_crawl, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :landing_page, :age_verified] #maybe an except here for landing page.
 
+
   load_and_authorize_resource except: [:index, :landing_page, :age_verified, :show, :create, :map_location, :update] #need non-admins to both create and show crawls
 
   # GET /crawls
@@ -29,6 +30,11 @@ class CrawlsController < ApplicationController
   # POST /crawls.json
   def create
     @crawl = Crawl.new
+    if @crawl.name.blank?
+      @crawl.name = "Default"
+    else
+      @crawl.name = params[:name]
+    end
     @crawl.address = params[:address]
     @crawl.user_id = current_user.id if user_signed_in?
 

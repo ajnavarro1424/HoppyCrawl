@@ -9,6 +9,7 @@ class Crawl < ApplicationRecord
 	resourcify
 
 	validates :user, presence: true
+	# after_create validates :name, presence: true
 
 	after_create :add_brew_stops
 

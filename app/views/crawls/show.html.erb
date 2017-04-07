@@ -30,6 +30,10 @@
 
 <%= form_for @crawl do |f| %>
 <div id="crawl_location" data-crawl-lat='<%=@crawl.latitude%>' data-crawl-long='<%=@crawl.longitude%>'>
+  <br>
+  <br>
+  <%= f.label :name_your_crawl %>
+  <%= f.text_field :name %>
   <%= f.label :date %>
   <%= f.date_select :date %>
   <%= f.fields_for :brewery_stops, @crawl.brewery_stops.order(start_time: :asc) do |bs_form| %>
@@ -44,6 +48,7 @@
     <% end %>
     <br>
     <br>
+
     <%= f.submit %>
   </div>
 </div>
