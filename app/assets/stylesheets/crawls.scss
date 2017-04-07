@@ -95,6 +95,16 @@ body#crawls_landing_page {
   left: 0;
 }
 
+body#crawls_show {
+  background: url("crawl_img.png") no-repeat center center fixed;
+  visibility: inherit;
+  background-size: cover;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
 .hoptoit{
   padding: 180px;
   // background: rgba(24, 0, 0, 0.3);
@@ -132,4 +142,12 @@ a:visited{
 }
 .user_links{
   color: #5A91EE;
+}
+
+input {
+  color :#5A91EE;
+}
+
+.container {
+  text-align: center;
 }
