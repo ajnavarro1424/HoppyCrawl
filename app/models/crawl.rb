@@ -21,7 +21,7 @@ class Crawl < ApplicationRecord
 
 	private
 		def add_brew_stops
-			breweries = Brewery.last(5)
+			breweries = Brewery.all
 
 			breweries.each do |b|
 				bs = BreweryStop.new
