@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:twitter]
 
   has_many :crawls
+
+  after_create :assign_role
   # Validators for dob during account creation
   validates :dob, presence: true, if: Proc.new { |u| u.provide != "twitter" }
   validate :age_not_less_than_21, if: Proc.new { |u| u.provide != "twitter" }
@@ -16,6 +18,10 @@ class User < ApplicationRecord
       errors.add(:dob, ": Ages under 21 not permitted")
 
     end
+  end
+
+  def assign_role
+    add_role(:user)
   end
 
   def assign_admin

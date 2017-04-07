@@ -3,7 +3,7 @@ class Crawl < ApplicationRecord
 	before_validation :geocode
 	belongs_to :user
 	# added for many-to-many relationship
-	has_many :brewery_stops
+	has_many :brewery_stops, :dependent => :delete_all
 	has_many :breweries, through: :brewery_stops
 	# end of many-to-many relationship code
 	resourcify
