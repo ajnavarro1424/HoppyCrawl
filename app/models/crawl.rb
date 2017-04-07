@@ -3,12 +3,13 @@ class Crawl < ApplicationRecord
 	before_validation :geocode
 	belongs_to :user
 	# added for many-to-many relationship
-	has_many :brewery_stops
+	has_many :brewery_stops, :dependent => :delete_all
 	has_many :breweries, through: :brewery_stops
 	# end of many-to-many relationship code
 	resourcify
 
 	validates :user, presence: true
+	# after_create validates :name, presence: true
 
 	after_create :add_brew_stops
 
@@ -20,7 +21,7 @@ class Crawl < ApplicationRecord
 
 	private
 		def add_brew_stops
-			breweries = Brewery.last(5)
+			breweries = Brewery.near([latitude, longitude], 5).first(5)
 
 			breweries.each do |b|
 				bs = BreweryStop.new

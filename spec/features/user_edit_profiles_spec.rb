@@ -23,7 +23,6 @@ RSpec.feature "UserEditProfiles", type: :feature do
         fill_in 'Email', with: 'change@change.com'
         fill_in 'Password', with: 'changepassword'
         fill_in 'Password confirmation', with:'changepassword'
-        fill_in 'Current password', with: '123456'
         click_button 'Update'
       end
       And 'Use goes back to landing page and sees content Your account has been updated successfully.' do

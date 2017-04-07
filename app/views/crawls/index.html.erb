@@ -12,20 +12,22 @@
 
   <tbody>
     <% @crawls.each do |crawl| %>
-      <tr>
-        <td><%= crawl.name %></td>
-        <td><%= link_to 'Show', crawl %></td>
-        <td><%= link_to 'Edit', edit_crawl_path(crawl) %></td>
-        <td><%= link_to 'Destroy', crawl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <% if current_user.id == crawl.user_id %>
+        <tr>
+          <td><%= crawl.name %></td>
+          <!-- <td><%= link_to 'Show', crawl %></td> -->
+          <td><%= link_to 'Edit', crawl %></td>
+          <td><%= link_to 'Delete', crawl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Crawl', new_crawl_path %>
+<%= link_to 'New Crawl', root_path %>
 
-<div id="crawl_map">
+<!-- <div id="crawl_map">
   One day there will be a map here...
-</div>
+</div> -->

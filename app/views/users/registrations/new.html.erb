@@ -1,39 +1,49 @@
+<div class="signup_page">
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true, :class => "fields" %>
   </div>
+  <br>
 
   <div class="field">
-    <%= f.label :dob %><br>
-    <%=f.date_select :dob, start_year: Date.today.year - 116, end_year: Date.today.year - 21 %>
+    <%= f.label :dob %>
+    <%=f.date_select :dob, start_year: Date.today.year - 116, end_year: Date.today.year - 21, :id => "dob_select" %>
   </div>
+  <br>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
+    <%= f.label :email %>
+    <%= f.email_field :email, :class => "fields" %>
   </div>
+  <br>
 
   <div class="field">
     <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off", :class => "fields" %><br>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
   </div>
+  <br>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", :class => "fields" %>
   </div>
+  <br>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", :id => "signup_button" %>
   </div>
 <% end %>
+<br>
+<br>
 
-<%= render "users/shared/links" %>
+<%= render "users/shared/links", :class => "user_links" %>
+</div>

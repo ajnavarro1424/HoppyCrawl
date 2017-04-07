@@ -17,7 +17,7 @@ RSpec.feature "CreateCrawlsV2s", type: :feature do
         visit '/'
       end
       When "I enter my location" do
-        fill_in 'address', with: '92111'
+        fill_in 'address', with: 'North Park, San Diego'
         click_button 'Crawl'
       end
       Then "I am taken to a page that has 5 breweries" do
@@ -33,22 +33,22 @@ RSpec.feature "CreateCrawlsV2s", type: :feature do
   context "As a logged in user I can update my crawls times" do
     Steps "See above" do
       Given "I generate a crawl" do
-        fill_in 'address', with: '92111'
+        fill_in 'address', with: 'North Park, San Diego'
         click_button 'Crawl'
       end
       When "I change the start time of a brewery stop and save it" do
-        select "2018", :from => "crawl_brewery_stops_attributes_2_start_time_1i" #year
+        select "04 PM", :from => "crawl_brewery_stops_attributes_2_start_time_4i" #year
         click_button 'Update Crawl'
       end
       Then "The start time has changed" do
-        expect(page).to have_content("2018")
+        expect(page).to have_content("04 PM")
       end
       And "I change the end time of brewery stop and save it" do
-        select "2016", :from => "crawl_brewery_stops_attributes_0_end_time_1i"
+        select "10 PM", :from => "crawl_brewery_stops_attributes_0_end_time_4i"
         click_button 'Update Crawl'
       end
-      Then "The end time has changed" do 
-        expect(page).to have_content("2016")
+      Then "The end time has changed" do
+        expect(page).to have_content("10 PM")
       end
     end
   end
