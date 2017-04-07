@@ -26,38 +26,46 @@
 
 
 <br>
-<div class="row" id="hoptoit">
-  <div class="col-md-12">
-    <h3>HOP TO IT!</h3>
-    <%= form_tag("/crawls/create") do %>
-      <%= text_field_tag 'address', nil, placeholder: "Enter Location" %>
-      <%= submit_tag 'Crawl' %>
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="three-p">
-
-      <!-- <img src="#"> --><i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
-      <h4>plot</h4>
-      <p>Bring the adventure right to your fingertips. Randomly generate a beer crawl regardless of your location!  </p>
+<div class="container">
+  <div class="row" id="center_piece">
+    <div class="col-md-12">
+      <div class="main_image">
+        <div class="hoptoit">
+          <h3 id="hop_text"><span>HOP</span> TO IT!</h3>
+          <%= form_tag("/crawls/create") do %>
+          <%= text_field_tag 'address', nil, placeholder: "Enter Location", :id => 'crawl_field' %>
+          <br>
+          <br>
+          <%= submit_tag 'Crawl', :id => 'crawl_button' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="three-p">
-      <!-- <img src="#"> --><i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
+  <div class="ashleydiv">    
+  <div class="row">
+    <div class="col-md-4">
+      <div class="three-p">
 
-      <h4>plan</h4>
-      <p>Edit, share, and rate your favorite crawls with your friends! Keep in touch with your favorite breweries, and keep up to date on all new beer releases!</p>
+        <!-- <img src="#"> --><i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
+        <h4>plot</h4>
+        <p>Bring the adventure right to your fingertips. Randomly generate a beer crawl regardless of your location!  </p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-4">
-    <div class="three-p">
-      <!-- <img src="#"> --> <i class="fa fa-users fa-5x" aria-hidden="true"></i>
-      <h4>party</h4>
-      <p>Hop to it and get your crawl on! Grab your best friends, get out, and explore your city the beer way. </p>
+    <div class="col-md-4">
+      <div class="three-p">
+        <!-- <img src="#"> --><i class="fa fa-calendar fa-5x" aria-hidden="true"></i>
+
+        <h4>plan</h4>
+        <p>Edit, share, and rate your favorite crawls with your friends! Keep in touch with your favorite breweries, and keep up to date on all new beer releases!</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="three-p">
+        <!-- <img src="#"> --> <i class="fa fa-users fa-5x" aria-hidden="true"></i>
+        <h4>party</h4>
+        <p>Hop to it and get your crawl on! Grab your best friends, get out, and explore your city the beer way. </p>
+      </div>
     </div>
   </div>
 </div>

@@ -22,14 +22,15 @@ pre {
 
 a {
   color: #000;
+  font-size: 1.5rem;
 
   &:visited {
-    color: #666;
+    color: #f7c311;
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #5A91EE;
+    // background-color: #000;
   }
 }
 
@@ -123,7 +124,8 @@ div {
 
 
 #notice {
-  color: green;
+  color: #5A91EE;
+  font-weight: bold;
 }
 
 .field_with_errors {

@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+body{
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: white;
+  background-color: black;
+}
+
+footer{
+  text-align: center;
+  padding-top: 80px;
+}
+
+.fa{
+  color: #f7c311;
+}
