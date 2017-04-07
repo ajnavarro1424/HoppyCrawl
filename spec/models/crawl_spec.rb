@@ -49,9 +49,9 @@ RSpec.describe Crawl, type: :model do
       crawl.save
       expect(BreweryStop.all.size).to eq(5)
     end
-  end
-
-  context "there are less than 5 breweries" do
+  # end
+  #
+  # context "there are less than 5 breweries" do
 
     it "should not fail to save if there are not enough breweries" do
       Brewery.destroy_all
