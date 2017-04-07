@@ -33,6 +33,21 @@ a {
   }
 }
 
+.holeOut {
+  a {
+    color: #000;
+
+    &:visited {
+      color: #666;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: white;
+    }
+  }
+}
+
 th {
   padding-bottom: 5px;
 }
@@ -48,6 +63,64 @@ div {
     margin-bottom: 10px;
   }
 }
+
+// social media animation start
+@keyframes hvr-bob {
+  0% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hvr-bob-float {
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+.hvr-bob {
+  display: inline-block;
+  background-color: white;
+}
+
+.hvr-bob:hover {
+   /* The name of the animation, defined in the @keyframes */
+  animation: hvr-bob-float, hvr-bob;
+  /* The duration of the animation, in seconds */
+  animation-duration: .1s, 1.5s;
+  /* The delay of the animation, in seconds */
+  animation-delay: 0s, .2s;
+  /* Specify how the animation progress over the duration of each cycle */
+  animation-timing-function: ease-out, ease-in-out;
+   /* Define the number of times an animation should cycle */
+  animation-iteration-count: 1, infinite;
+  /* Specify how the animation should apply styles to its target before and after executing */
+  animation-fill-mode: forwards;
+  /* Indicates whether the animation should play in reverse on alternate cycles */
+  animation-direction: normal, alternate;
+}
+
+.magictime {
+  animation: holeOut;
+  animation-duration: .1s, 2s;
+  animation-delay: 0s, .2s;
+  animation-timing-function: ease-out, ease-in-out;
+  animation-iteration-count: 2 infinite;
+  animation-fill-mode: forwards;
+  animation-direction: normal, alternate;
+
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  // -o-animation-duration: 3s;
+}
+
+// social media animation end
+
 
 #notice {
   color: green;
