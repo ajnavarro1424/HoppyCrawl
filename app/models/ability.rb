@@ -8,10 +8,8 @@ class Ability
     end
     if user.has_role? :admin
       can :manage, :all
-    # elsif user.has_role? :auth_user
-    #   can :manage, Crawl
-    # elsif user.has_role? :unauth_user
-    #   can :read, Crawl, user_id: user.id
+    elsif user.has_role? :user
+      can :manage, Crawl, user_id: user.id
     end
   end
 end

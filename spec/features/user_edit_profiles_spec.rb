@@ -13,7 +13,6 @@ RSpec.feature "UserEditProfiles", type: :feature do
       end
       And "User is on Edit user page can change their name, dob, email, and password" do
         # Check user values to match initialization values
-        save_and_open_page
         expect(@user.name).to eq 'Test Testerson'
         expect(@user.email).to eq 'test@test.com'
         expect(@user.dob.to_s).to eq "1985-05-05"

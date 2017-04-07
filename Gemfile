@@ -45,6 +45,7 @@ gem 'dotenv-rails'
 gem 'underscore-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'google_places'
 
 group :test do
   gem 'capybara'

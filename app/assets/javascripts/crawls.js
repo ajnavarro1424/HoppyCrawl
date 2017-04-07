@@ -20,7 +20,7 @@ function loadAndCreateGMap() {
 
     infoWindow = new google.maps.InfoWindow();
     $(".brewery_stop").each(function () {
-      createMarker({'latitude': $(this).data("lat"), 'longitude': $(this).data("long"), 'name': $(this).data("name"), 'website': $(this).data("website"), 'description': $(this).data("description")})
+      createMarker({'latitude': $(this).data("lat"), 'longitude': $(this).data("long"), 'name': $(this).data("name"), 'website': $(this).data("website"), 'address': $(this).data("address"), 'phone_number': $(this).data("phone-number")})
     })
   }
 }
@@ -45,6 +45,8 @@ function createMarker(place){
         }
         iWindowStr+="<br>---------------<br>"
         iWindowStr+=place.address
+        iWindowStr+="<br>---------------<br>"
+        iWindowStr+=place.phone_number
         infoWindow.setContent(iWindowStr)
         infoWindow.open(map, this); //makes the infoWindow open when clicked
       })
