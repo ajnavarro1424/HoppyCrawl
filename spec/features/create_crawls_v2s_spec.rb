@@ -17,7 +17,7 @@ RSpec.feature "CreateCrawlsV2s", type: :feature do
         visit '/'
       end
       When "I enter my location" do
-        fill_in 'address', with: '92111'
+        fill_in 'address', with: 'North Park, San Diego'
         click_button 'Crawl'
       end
       Then "I am taken to a page that has 5 breweries" do
@@ -33,7 +33,7 @@ RSpec.feature "CreateCrawlsV2s", type: :feature do
   context "As a logged in user I can update my crawls times" do
     Steps "See above" do
       Given "I generate a crawl" do
-        fill_in 'address', with: '92111'
+        fill_in 'address', with: 'North Park, San Diego'
         click_button 'Crawl'
       end
       When "I change the start time of a brewery stop and save it" do

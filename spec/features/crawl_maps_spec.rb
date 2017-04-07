@@ -13,7 +13,7 @@ RSpec.feature "CrawlMaps", type: :feature do
        expect(page).to have_content("HOP TO IT!")
       end
       When "I enter a zip code and click on the 'Crawl' button" do
-       fill_in "address", with: '92111'
+       fill_in "address", with: 'North Park, San Diego'
        click_button "Crawl"
       end
       And "I am taken to a show page that has a map of that zip code on it" do

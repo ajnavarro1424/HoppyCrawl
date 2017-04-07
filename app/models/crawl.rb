@@ -21,7 +21,7 @@ class Crawl < ApplicationRecord
 
 	private
 		def add_brew_stops
-			breweries = Brewery.all
+			breweries = Brewery.near([latitude, longitude], 5).first(5)
 
 			breweries.each do |b|
 				bs = BreweryStop.new

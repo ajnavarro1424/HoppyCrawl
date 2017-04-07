@@ -11,7 +11,7 @@ RSpec.feature "UserEditDestroyOwnCrawls", type: :feature do
       end
       Then "I click on the edit link to modify my crawl" do
         click_link 'Edit'
-        expect(page).to have_content('Editing Crawl')
+        expect(page).to have_content('Make Another Search')
         fill_in "crawl[name]", with: "My cool crawl"
         click_button 'Update Crawl'
         @crawl.reload
@@ -20,7 +20,7 @@ RSpec.feature "UserEditDestroyOwnCrawls", type: :feature do
       end
       Then 'I click on the destroy link to destroy my crawl' do
         click_link 'Back'
-        expect { click_link 'Destroy' }.to change(Crawl, :count).by(-1)
+        expect { click_link 'Delete' }.to change(Crawl, :count).by(-1)
         expect(page).to_not have_content('My cool crawl')
         expect(page).to have_content('Crawl was successfully destroyed.')
       end

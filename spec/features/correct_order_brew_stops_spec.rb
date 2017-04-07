@@ -15,11 +15,10 @@ RSpec.feature "CorrectOrderBrewStops", type: :feature do
   context "As a user, I can change the times of my brew stops, which will automatically update the order" do
     Steps "See above" do
       Given "I have generated a crawl" do
-        fill_in 'address', with: '92111'
+        fill_in 'address', with: 'North Park, San Diego' #Addresses actually matter now! 92111 is not in the 5 mile radius of our breweries
         click_button 'Crawl'
       end
       When "I change the times of a brew crawl" do
-
         select '04 PM', :from => 'crawl_brewery_stops_attributes_2_start_time_4i'
         click_button 'Update Crawl'
       end
