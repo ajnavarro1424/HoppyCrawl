@@ -1,6 +1,32 @@
 // Place all the styles related to the Crawls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.navbar{
+  background-color: transparent;
+  border-style: none;
+}
+
+.navbar-brand{
+  font-size: 3.5rem;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+  color: #f7c311;
+
+}
+
+ .navbar-default .navbar-nav > li > a {
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #5A91EE;
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+}
 
 // yellow #f7c311
 
@@ -11,17 +37,12 @@
 
 .three-p{
   text-align: center;
-  padding-top: 300px;
+  padding-top: 50px;
 }
 
-#hoptoit{
+#center_piece{
   text-align: center;
-  padding-top: 200px;
-}
-
-footer{
-  text-align: center;
-  padding-top: 100px;
+  // padding-top: 100px;
 }
 
 #socialicons {
@@ -64,17 +85,51 @@ footer{
     text-align: center;
 }
 
-/* The Close Button */
-// .close {
-//     color: #aaa;
-//     float: right;
-//     font-size: 28px;
-//     font-weight: bold;
-// }
+body#crawls_landing_page {
+  background: url("mainimage2.png") no-repeat center center fixed;
+  visibility: inherit;
+  background-size: cover;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
 
-// .close:hover,
-// .close:focus {
-//     color: black;
-//     text-decoration: none;
-//     cursor: pointer;
-// }
+.hoptoit{
+  padding: 180px;
+  // background: rgba(24, 0, 0, 0.3);
+  width: 100%
+}
+
+span{
+  color: #f7c311;
+}
+
+#crawl_field{
+  color: #5A91EE;
+  height: 30px;
+  width: 200px;
+  text-align: center;
+  font-size: 1.7rem;
+}
+
+#crawl_button{
+  color: #FFF;
+  // main citrus color//
+  background-color: #f7c311;
+  width: 80px;
+  height: 40px;
+  font-size: 2rem;
+  border-radius: 5px;
+}
+
+#hop_text{
+  font-size: 9rem;
+}
+
+a:visited{
+  color: #5A91EE;
+}
+.user_links{
+  color: #5A91EE;
+}
