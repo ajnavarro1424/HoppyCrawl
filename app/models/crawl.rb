@@ -2,8 +2,11 @@ class Crawl < ApplicationRecord
 	geocoded_by :address
 	before_validation :geocode
 	belongs_to :user
-	# added for many-to-many relationship
+
+	# added for many-to-many relationship, if crawl is deleted
+	# associated brewery stops are deleted as well.
 	has_many :brewery_stops, :dependent => :delete_all
+
 	has_many :breweries, through: :brewery_stops
 	# end of many-to-many relationship code
 	resourcify

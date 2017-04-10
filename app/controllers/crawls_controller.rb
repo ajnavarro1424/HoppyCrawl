@@ -10,6 +10,17 @@ class CrawlsController < ApplicationController
   def index
     @crawls = Crawl.all
     @ability = Ability.new(current_user)
+    # Check the search fields for text, then generate results list
+    # if params[:text_search].present? && params[:number_search].present?
+
+    if params[:number_search].present? && params[:text_search].present?
+      @results = Array.new
+      flash[:notice] = "Search using only one field."
+    elsif params[:number_search].present?
+      @results = Crawl.where("user_id = ?", params[:number_search])
+    elsif params[:text_search].present?
+      @results = Crawl.search(params[:text_search])
+    end
   end
 
   # GET /crawls/1
@@ -50,7 +61,7 @@ class CrawlsController < ApplicationController
         format.json { render json: @crawl.errors, status: :unprocessable_entity }
       end
     end
-    
+
   end
 
   # PATCH/PUT /crawls/1
@@ -70,7 +81,9 @@ class CrawlsController < ApplicationController
   # DELETE /crawls/1
   # DELETE /crawls/1.json
   def destroy
+
     @crawl.destroy
+
     respond_to do |format|
       format.html { redirect_to crawls_url, notice: 'Crawl was successfully destroyed.' }
       format.json { head :no_content }

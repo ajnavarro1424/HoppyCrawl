@@ -29,6 +29,7 @@
 </div>
 
 <%= form_for @crawl do |f| %>
+
 <div id="crawl_location" data-crawl-lat='<%=@crawl.latitude%>' data-crawl-long='<%=@crawl.longitude%>'>
   <br>
   <br>
@@ -52,4 +53,5 @@
     <%= f.submit %>
   </div>
 </div>
+
 <% end %>
