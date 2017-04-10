@@ -70,19 +70,32 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    // background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color:rgba(255,255,255,0.8);
     margin: 15% auto; /* 15% from the top and centered */
-    padding-top: 112px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    height: 40%;
+    padding-top: .05px;
+    border: 0px solid #888;
+    width: 70%; /* Could be more or less, depending on screen size */
+    height: 50%;
+    color: black;
     text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.8rem;
+}
+
+#age_check {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 2.5rem;
+}
+
+#logo{
+  height: 305px;
+  width: 305px;
 }
 
 body#crawls_landing_page {
@@ -130,6 +143,44 @@ span{
 a:visited{
   color: #5A91EE;
 }
-.user_links{
-  color: #5A91EE;
+
+
+// crawl page index styling all here
+
+#crawl_name{
+  font-size: 2.3rem;
+  text-align: center;
+}
+
+#crawls_index{
+  background: url("new_crawl_img.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+#crawl_table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#new_crawl_link {
+  font-size: 1.8rem;
+}
+
+.crawl_link{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#crawl_name_table{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#crawls_page{
+  text-align: center;
+}
+
+thead{
+  padding-bottom: 300px;
+
 }

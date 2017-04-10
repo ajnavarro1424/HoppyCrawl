@@ -42,7 +42,7 @@ class CrawlsController < ApplicationController
   def create
     @crawl = Crawl.new
     if @crawl.name.blank?
-      @crawl.name = "Default"
+      @crawl.name = "Default Name"
     else
       @crawl.name = params[:name]
     end

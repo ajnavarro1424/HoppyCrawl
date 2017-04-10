@@ -1,4 +1,16 @@
 
+
+<div id="crawls_page">
+
+<h2>Crawls</h2>
+<br>
+<table id="crawl_table">
+  <thead>
+    <tr>
+      <!-- <th id="crawl_name" colspan="3">Name</th> -->
+      <!-- <th colspan="3"></th> -->
+
+
 <h1>Crawls</h1>
 <%= form_tag("/crawls", method: "get" ) do %>
 <%= label_tag(:text_search, "Search by Name or Address:") %>
@@ -57,13 +69,11 @@
       <th>Created At</th>
       <th>Updated At</th>
       <th colspan="3"></th>
+
     </tr>
   </thead>
-
   <tbody>
     <% @crawls.each do |crawl| %>
-
-
       <% if (current_user.id == crawl.user_id) || (current_user.has_role? :admin) %>
       <tr>
         <td><%= crawl.name %></td>
@@ -77,11 +87,14 @@
         <td><%= link_to 'Edit | ', crawl %></td>
         <td><%= link_to 'Delete', crawl, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
       <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<br>
 
 <%= link_to 'New Crawl', root_path %>
+</div>
