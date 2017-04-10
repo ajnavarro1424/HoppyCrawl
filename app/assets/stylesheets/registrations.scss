@@ -1,21 +1,23 @@
 // Place all the styles related to the Registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#registrations_new, #sessions_new{
+#registrations_new, #sessions_new, #registrations_edit, #passwords_new{
   background: url("edit_reg_page2.png") no-repeat center center fixed;
   background-size: cover;
 }
 
-.edit_page, .signup_page, .login_page{
+.edit_page, .signup_page, .login_page, .passwords {
   text-align: center;
 }
 
 .field{
-
 }
 
 .update_button{
+}
 
+.password_field {
+  padding-bottom: 30px;
 }
 
 .unhoppy{
@@ -48,7 +50,7 @@
   text-align: center;
 }
 
-#login_button, #signup_button{
+#login_button, #signup_button, #edit_button{
   color: #FFF;
   // main citrus color//
   background-color: #f7c311;
@@ -56,6 +58,28 @@
   height: 30px;
   font-size: 1.5rem;
   border-radius: 5px;
+}
+
+#unhoppy_button{
+  color: #FFF;
+  background-color: #f7c311;
+  width: 125px;
+  height: 30px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+#password_button {
+  color: #FFF;
+  background-color: #f7c311;
+  width: 125px;
+  height: 30px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+.password_actions {
+  padding-bottom: 110px;
 }
 
 #user_dob_1i, #user_dob_2i, #user_dob_3i{

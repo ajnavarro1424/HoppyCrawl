@@ -13,50 +13,50 @@
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => "fields" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :address %>
-    <%= f.text_area :address %>
+    <%= f.text_area :address, :class => "fields" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :website %>
-    <%= f.text_field :website %>
+    <%= f.text_field :website, :class => "fields" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :hours %>
-    <%= f.text_area :hours %>
+    <%= f.text_area :hours, :class => "fields" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number, :class => "fields" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :class => "fields" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :rating %>
-    <%= f.number_field :rating %>
+    <%= f.number_field :rating, :class => "fields" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :latitude %>
-    <%= f.number_field :latitude, step: :any %>
+    <%= f.number_field :latitude, step: :any, :class => "fields" %>
   </div>
-
+  <br>
   <div class="field">
     <%= f.label :longitude %>
-    <%= f.number_field :longitude, step: :any %>
+    <%= f.number_field :longitude, step: :any, :class => "fields" %>
   </div>
-
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Brewery", :id => "brewery_button" %>
   </div>
 <% end %>

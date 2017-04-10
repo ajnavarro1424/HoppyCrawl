@@ -1,17 +1,17 @@
-<p id="notice"><%= notice %></p>
+<h1 id="breweries">Breweries</h1>
 
-<h1>Breweries</h1>
+<%= link_to 'New Brewery', new_brewery_path, :id => "new_brew" %>
 
-<table>
+<table class="breweries_table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Website</th>
-      <th>Hours</th>
-      <th>Phone Number</th>
-      <th>Description</th>
-      <th>Rating</th>
+      <th class="breweries_table">Name</th>
+      <th class="breweries_table">Address</th>
+      <th class="breweries_table">Website</th>
+      <th class="breweries_table">Hours</th>
+      <th class="breweries_table">Phone</th>
+      <th class="breweries_table">Description</th>
+      <th class="breweries_table">Rating</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -35,5 +35,3 @@
 </table>
 
 <br>
-
-<%= link_to 'New Brewery', new_brewery_path %>

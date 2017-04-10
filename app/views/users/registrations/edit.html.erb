@@ -1,15 +1,14 @@
 <div class="edit_page">
 <h4><%= flash[:alert] %></h4>
 <br>
-<h1>Edit <%= resource_name.to_s.humanize %></h1>
-
+<h1>Edit <%= resource_name.to_s.humanize %> Profile</h1>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name, autofocus: true %>
+    <%= f.text_field :name, autofocus: true, :class => "fields"  %>
   </div>
   <br>
 
@@ -21,7 +20,7 @@
 
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, :class => "fields"  %>
   </div>
   <br>
 
@@ -32,7 +31,7 @@
 
   <div class="field">
     <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off", placeholder: "not required" %>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "not required", :class => "fields"  %>
     <% if @minimum_password_length %><br>
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
@@ -41,7 +40,7 @@
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "not required"  %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "not required", :class => "fields" %>
   </div>
   <br>
 
@@ -51,7 +50,7 @@
   </div> -->
 
   <div class="update_button">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", :id => "edit_button"%>
   </div>
   <br>
 <% end %>
@@ -61,7 +60,7 @@
 </div>
 
 <div class="unhoppy">
-  <h2>Unhoppy?</h2><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+  <h2>Unhoppy?</h2><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :id => "unhoppy_button" %>
 </div>
 
 <br>
