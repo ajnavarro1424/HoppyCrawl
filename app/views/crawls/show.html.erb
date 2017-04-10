@@ -1,4 +1,4 @@
-<!-- <div class="container" > -->
+<div class="container" >
   <%= form_for @crawl do |f| %>
   <div class="row" style="margin-bottom: 20px; text-align:center;">
     <div class="col-md-4">
@@ -34,7 +34,9 @@
       <% end %> <!-- End of first 3 brew stops -->
     </div> <!-- End of col 2, col 1 -->
     <div class="col-md-3">
-      <%= f.fields_for :brewery_stops, @crawl.brewery_stops.order(start_time: :asc).last(3) do |bs_form| %>
+      <% @crawl.brewery_stops.count>= 3 ? brew_count = @crawl.brewery_stops.count-3 : brew_count = 0%>
+      <%= brew_count>
+      <%= f.fields_for :brewery_stops, @crawl.brewery_stops.order(start_time: :asc).last(brew_count) do |bs_form| %>
         <div class='brewery_stop' data-lat='<%= bs_form.object.brewery.latitude %>' data-long='<%= bs_form.object.brewery.longitude %>' data-name='<%= bs_form.object.brewery.name %>' data-website='<%= bs_form.object.brewery.website %>' data-address='<%= bs_form.object.brewery.address %>' data-phone-number='<%= bs_form.object.brewery.phone_number %>' data-hours='<%= bs_form.object.brewery.hours %>' data-rating='<%= bs_form.object.brewery.rating %>'
           <%= bs_form.hidden_field :brewery_id %>
           <%= bs_form.hidden_field :crawl_id %>
@@ -46,23 +48,20 @@
         </div> <!-- End of brewery_stop -->
       <% end %>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
       <%= f.submit %>
     </div> <!-- End of col 2, col 2 -->
 
   </div> <!-- end of row 2 -->
 
-
+<div class="row bottom-row">
   <h4>Make Another Search</h4>
   <%= form_tag("/crawls/create") do %>
   <%= text_field_tag 'address', nil, placeholder: "Enter Location" %>
   <%= submit_tag 'New Crawl' %>
   <% end %>
 
+</div>
 
-<!-- </div> -->
+
 <% end %> <!-- end of line 2 -->
+</div>
