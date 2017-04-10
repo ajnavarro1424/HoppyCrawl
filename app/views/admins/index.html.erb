@@ -1,31 +1,35 @@
-<%= link_to 'Home Page', root_path %>
-
-<h1>Users</h1>
-<table>
-  <thead>
-    <thead>
-      <tr>
-        <th>Email</th>
-        <th>Role</th>
-      </tr>
-    </thead>
-  </thead>
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.email %></td>
-      <td>
-        <%if user.has_role?(:admin)%>
-          <%= form_tag("/admins/" + user.id.to_s + "?role=user", method: :PUT) do %>
-            <input id="remove_admin_<%=user.id.to_s%>" type="submit" value="Remove Admin"/>
-          <% end %>
-        <%else%>
-          <%= form_tag("/admins/" + user.id.to_s + "?role=admin", method: :PUT) do %>
-            <input id="make_admin_<%=user.id.to_s%>" type="submit" value="Make Admin"/>
-          <% end %>
+<div class="container">
+  <h1 id="admin_user">User Roles</h1>
+  <div class="row">
+    <div class="col-md-12">
+      <table>
+        <thead>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+            <td>
+              <%if user.has_role?(:admin)%>
+                <%= form_tag("/admins/" + user.id.to_s + "?role=user", method: :PUT) do %>
+                  <input class="admin_button" id="remove_admin_<%=user.id.to_s%>" type="submit" value="Remove Admin"/>
+                <% end %>
+              <%else%>
+                <%= form_tag("/admins/" + user.id.to_s + "?role=admin", method: :PUT) do %>
+                  <input class="admin_button" id="make_admin_<%=user.id.to_s%>" type="submit" value="Make Admin"/>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

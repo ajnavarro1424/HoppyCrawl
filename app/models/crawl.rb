@@ -1,9 +1,13 @@
 class Crawl < ApplicationRecord
 	geocoded_by :address
 	before_validation :geocode
+	before_update :update_brew_stops
 	belongs_to :user
-	# added for many-to-many relationship
+
+	# added for many-to-many relationship, if crawl is deleted
+	# associated brewery stops are deleted as well.
 	has_many :brewery_stops, :dependent => :delete_all
+
 	has_many :breweries, through: :brewery_stops
 	# end of many-to-many relationship code
 	resourcify
@@ -21,7 +25,7 @@ class Crawl < ApplicationRecord
 
 	private
 		def add_brew_stops
-			breweries = Brewery.near([latitude, longitude], 5).first(5)
+			breweries = Brewery.near([latitude, longitude], 2).first(6)
 
 			breweries.each do |b|
 				bs = BreweryStop.new
@@ -29,6 +33,20 @@ class Crawl < ApplicationRecord
 				bs.crawl_id = id
 				brewery_stops << bs
 			end
+		end
+
+		def update_brew_stops
+			brewery_stops.clear #Must be .clear, or it won't work!
+			breweries = Brewery.near([latitude, longitude], 2).first(6)
+			puts "Our Lat/Lngs are #{latitude}, #{longitude}"
+			breweries.each do |b|
+				puts "Name of brewery: #{b.name}"
+				bs = BreweryStop.new
+				bs.brewery_id = b.id
+				bs.crawl_id = id
+				brewery_stops << bs
+			end
+			puts Brewery.find(brewery_stops.first.brewery_id).name
 		end
 
 end

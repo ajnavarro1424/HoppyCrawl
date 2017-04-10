@@ -47,6 +47,10 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'google_places'
 
+# Database Search
+gem 'textacular'
+
+
 group :test do
   gem 'capybara'
   gem 'rspec-example_steps'

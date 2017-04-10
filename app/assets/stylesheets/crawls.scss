@@ -50,14 +50,14 @@
   margin-right: auto;
   display:block;
   padding-top: 10px;
-  background-color: white;
+  // background-color: white;
 }
 
 .fa {
   // height: 100px;
   margin: 5px;
   color: #f7c311;
-  background-color: white;
+  // background-color: white;
 }
 
 
@@ -70,23 +70,46 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    // background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color:rgba(255,255,255,0.8);
     margin: 15% auto; /* 15% from the top and centered */
-    padding-top: 112px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    height: 40%;
+    padding-top: .05px;
+    border: 0px solid #888;
+    width: 70%; /* Could be more or less, depending on screen size */
+    height: 50%;
+    color: black;
     text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.8rem;
+}
+
+#age_check {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 2.5rem;
+}
+
+#logo{
+  height: 305px;
+  width: 305px;
 }
 
 body#crawls_landing_page {
   background: url("mainimage2.png") no-repeat center center fixed;
+  visibility: inherit;
+  background-size: cover;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+body#crawls_show {
+  background: url("new_crawl_img.png") no-repeat center center fixed;
   visibility: inherit;
   background-size: cover;
   top: 0;
@@ -130,6 +153,76 @@ span{
 a:visited{
   color: #5A91EE;
 }
-.user_links{
+
+
+// crawl page index styling all here
+
+#crawl_name{
+  font-size: 2.3rem;
+  text-align: center;
+}
+
+#crawls_index{
+  background: url("new_crawl_img.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+#crawl_table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#new_crawl_link {
+  font-size: 1.8rem;
+}
+
+.crawl_link{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#crawl_name_table{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#crawls_page{
+  text-align: center;
+}
+
+thead{
+  padding-bottom: 300px;
+
+}
+
+input {
+  color :#5A91EE;
+}
+
+.container {
+  text-align: center;
+}
+
+select {
   color: #5A91EE;
+}
+
+h4, h5 {
+  color: #f7c311;
+}
+
+.brewery_stop {
+  label {
+    color: #f7c311;
+  }
+}
+
+.blue-text {
+  color: #5A91EE;
+  background-color: white;
+  padding: 0px 3px 0px 3px;
+}
+
+.gm-style-iw {
+  color: black;
 }

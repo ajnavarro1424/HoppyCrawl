@@ -5,9 +5,6 @@ RSpec.feature "SaveAndAddNamesToCrawls", type: :feature do
     Steps "On the crawl show page a logged in user can see and edit the name of that specific crawl" do
       Given "We are on the landing page and the user logs in" do
         @user = create_user
-        @otheruser = create_user_2
-        @mycrawl = Crawl.create!(user_id: @user.id, name: 'My Crawl', address: '92111', latitude: '32.1', longitude: '-117.1' )
-        @othercrawl = Crawl.create!(user_id: @otheruser.id, name: 'Other Crawl', address: '92111', latitude: '32.4', longitude: '-117.2')
         login_as(@user, :scope => :user)
         visit '/'
         fill_in "address", with: "92111"
@@ -17,9 +14,14 @@ RSpec.feature "SaveAndAddNamesToCrawls", type: :feature do
         expect(page).to have_content("Name your crawl")
       end
       Then "I can change the crawl name and save my changes" do
+        c1 = Crawl.last
         fill_in "crawl[name]", with: "Best Crawls Evah"
+        puts page.body
         click_button 'Update Crawl'
+        c2 = Crawl.last
+        expect(c1).to eq(c2)
         expect(page).to have_content 'Crawl was successfully updated.'
+        save_and_open_page
       end
       And "I am a signed in user on the crawls index page and can only see my crawls" do
         click_link 'Crawls'

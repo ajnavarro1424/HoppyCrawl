@@ -1,0 +1,60 @@
+#admins_index, #breweries_index, #breweries_new, #breweries_edit, #breweries_update, #breweries_show{
+  background: url("admin1.png") no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+}
+
+.admin_button{
+  color: #FFF;
+  background-color: #f7c311;
+  width: 145px;
+  height: 30px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+#brewery_button{
+  color: #FFF;
+  background-color: #f7c311;
+  width: 115px;
+  height: 30px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+td{
+  font-weight: bold;
+  text-align: center;
+}
+
+th{
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+table{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#admin_user{
+  padding-bottom: 50px;
+}
+
+.breweries_table{
+  padding-top: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+#breweries{
+padding-bottom: 20px;
+}
+
+#new_brew{
+  padding-bottom: 20px;
+  font-size: 2rem;
+}

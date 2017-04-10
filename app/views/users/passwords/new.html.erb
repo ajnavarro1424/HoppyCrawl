@@ -2,14 +2,14 @@
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<br>
+  <div class="password_field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, :class => "fields" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="password_actions">
+    <%= f.submit "Send reset email", :id => "password_button" %>
   </div>
 <% end %>
 

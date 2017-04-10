@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   after_create :assign_role
   # Validators for dob during account creation
+
+  validates :password, length: { in: 6..20 }
   validates :dob, presence: true, if: Proc.new { |u| u.provide != "twitter" }
   validate :age_not_less_than_21, if: Proc.new { |u| u.provide != "twitter" }
 
