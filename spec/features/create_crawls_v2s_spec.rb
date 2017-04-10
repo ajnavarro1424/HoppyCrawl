@@ -21,6 +21,7 @@ RSpec.feature "CreateCrawlsV2s", type: :feature do
         click_button 'Crawl'
       end
       Then "I am taken to a page that has 5 breweries" do
+        save_and_open_page
         expect(page).to have_content('Mike Hess Brewing North Park')
         expect(page).to have_content('North Park Beer Company')
         expect(page).to have_content('Belching Beaver North Park')
