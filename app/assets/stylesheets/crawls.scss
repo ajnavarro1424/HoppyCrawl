@@ -108,6 +108,16 @@ body#crawls_landing_page {
   left: 0;
 }
 
+body#crawls_show {
+  background: url("new_crawl_img.png") no-repeat center center fixed;
+  visibility: inherit;
+  background-size: cover;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
 .hoptoit{
   padding: 180px;
   // background: rgba(24, 0, 0, 0.3);
@@ -183,4 +193,36 @@ a:visited{
 thead{
   padding-bottom: 300px;
 
+}
+
+input {
+  color :#5A91EE;
+}
+
+.container {
+  text-align: center;
+}
+
+select {
+  color: #5A91EE;
+}
+
+h4, h5 {
+  color: #f7c311;
+}
+
+.brewery_stop {
+  label {
+    color: #f7c311;
+  }
+}
+
+.blue-text {
+  color: #5A91EE;
+  background-color: white;
+  padding: 0px 3px 0px 3px;
+}
+
+.gm-style-iw {
+  color: black;
 }

@@ -23,7 +23,7 @@ RSpec.feature "CorrectOrderBrewStops", type: :feature do
         click_button 'Update Crawl'
       end
       Then "The brew stops will be in order of start times" do
-        expect(page).to have_select("crawl_brewery_stops_attributes_0_start_time_4i", selected: '04 PM')
+        expect(page).to have_select("crawl_brewery_stops_attributes_2_start_time_4i", selected: '04 PM')
       end
     end
   end
