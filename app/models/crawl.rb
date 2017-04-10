@@ -35,6 +35,7 @@ class Crawl < ApplicationRecord
 			end
 		end
 
+
 		def update_brew_stops
 			brewery_stops.clear #Must be .clear, or it won't work!
 			breweries = Brewery.near([latitude, longitude], 2).first(6)
