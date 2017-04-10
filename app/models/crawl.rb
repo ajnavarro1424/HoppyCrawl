@@ -1,6 +1,7 @@
 class Crawl < ApplicationRecord
 	geocoded_by :address
 	before_validation :geocode
+	#before_update :add_brew_stops
 	belongs_to :user
 	# added for many-to-many relationship
 	has_many :brewery_stops, :dependent => :delete_all

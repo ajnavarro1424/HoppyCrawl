@@ -50,7 +50,7 @@ class CrawlsController < ApplicationController
         format.json { render json: @crawl.errors, status: :unprocessable_entity }
       end
     end
-    
+
   end
 
   # PATCH/PUT /crawls/1
