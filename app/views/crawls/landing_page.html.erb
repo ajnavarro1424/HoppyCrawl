@@ -31,7 +31,7 @@
       <div class="main_image">
         <div class="hoptoit">
           <h3 id="hop_text"><span>HOP</span> TO IT!</h3>
-            <h4 id="loc_ready">Finding your position...<img src="https://d13yacurqjgara.cloudfront.net/users/82092/screenshots/1073359/spinner.gif" height="64" width="85"></h4>
+            <h4 id="loc_ready">Finding your location...<%= image_tag 'ball.gif', width: 30, height: 30 %></h4>
           <%= form_tag("/crawls/create") do %>
           <%= text_field_tag 'address', nil, placeholder: "Enter Location", :id => 'crawl_field' %>
           <%= hidden_field_tag 'your_lat', ''  %>

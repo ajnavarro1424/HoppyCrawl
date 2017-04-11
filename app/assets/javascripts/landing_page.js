@@ -5,7 +5,7 @@ $(document).ready(function() {
       navigator.geolocation.getCurrentPosition(function(position) {
       $("#your_lat").val(position.coords.latitude)
       $("#your_long").val(position.coords.longitude)
-      $("#loc_ready").html("Your position has been found!")
+      $("#loc_ready").html("Your location has been found!")
       $("#crawl_field").attr("placeholder", "Let's Crawl!")
     })
   }
