@@ -19,6 +19,7 @@ function loadAndCreateGMap() {
     });
 
     infoWindow = new google.maps.InfoWindow();
+    //createMarker for current location
     $(".brewery_stop").each(function () {
       createMarker({'latitude': $(this).data("lat"), 'longitude': $(this).data("long"), 'name': $(this).data("name"), 'website': $(this).data("website"), 'address': $(this).data("address"), 'phone_number': $(this).data("phone-number")})
     })

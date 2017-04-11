@@ -49,8 +49,14 @@ class CrawlsController < ApplicationController
     @crawl.address = params[:address]
     @crawl.user_id = current_user.id if user_signed_in?
 
+    if (!params[:your_lat].nil? && !params[:your_long].nil? && @crawl.address.empty?) #have to set them here or it won't work!
+      @crawl.latitude = params[:your_lat]
+      @crawl.longitude = params[:your_long]
+    end
+    puts "Local lat is #{@crawl.latitude}"
+
     respond_to do |format|
-      if @crawl.invalid_address
+      if @crawl.invalid_address && ((params[:your_lat].nil? || params[:your_lat].empty? )&& ( params[:your_long].nil?||params[:your_long].empty?))
         format.html { redirect_back(fallback_location: root_path, notice: 'Please enter a valid address!') }
         format.json { render json: @crawl.errors, status: :unprocessable_entity }
       elsif @crawl.save
