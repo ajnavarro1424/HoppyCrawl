@@ -1,5 +1,6 @@
 class Crawl < ApplicationRecord
 	geocoded_by :address
+
 	before_validation :geocode
 
 
@@ -50,4 +51,9 @@ class Crawl < ApplicationRecord
 			end
 		end
 
-end
+		#used to prevent geocoding if there are already a lat and long (i.e. if a user did not input an address and used their local location instead)
+		def check_nil_latlng
+			!latitude.nil?&&!longitude.nil?
+		end
+
+	end

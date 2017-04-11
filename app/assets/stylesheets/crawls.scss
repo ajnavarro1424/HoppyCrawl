@@ -99,7 +99,7 @@
 }
 
 body#crawls_landing_page {
-  background: url("mainimage2.png") no-repeat center center fixed;
+  background: image-url("mainimage2.png") no-repeat center center fixed;
   visibility: inherit;
   background-size: cover;
   top: 0;
@@ -109,7 +109,7 @@ body#crawls_landing_page {
 }
 
 body#crawls_show {
-  background: url("new_crawl_img.png") no-repeat center center fixed;
+  background: image-url("new_crawl_img.png") no-repeat center center fixed;
   visibility: inherit;
   background-size: cover;
   top: 0;
@@ -163,7 +163,7 @@ a:visited{
 }
 
 #crawls_index{
-  background: url("new_crawl_img.png") no-repeat center center fixed;
+  background: image-url("new_crawl_img.png") no-repeat center center fixed;
   background-size: cover;
 }
 
