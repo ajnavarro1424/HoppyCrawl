@@ -33,7 +33,7 @@
         <% @crawl.brewery_stops.count>= 3 ? brew_count = 2 : brew_count = 0%>
 
         <%= f.fields_for :brewery_stops, @crawl.brewery_stops.order(start_time: :asc)[0..brew_count] do |bs_form| %>
-          <div class='brewery_stop' data-lat='<%= bs_form.object.brewery.latitude %>' data-long='<%= bs_form.object.brewery.longitude %>' data-name='<%= bs_form.object.brewery.name %>' data-website='<%= bs_form.object.brewery.website %>' data-address='<%= bs_form.object.brewery.address %>' data-phone-number='<%= bs_form.object.brewery.phone_number %>' data-hours='<%= bs_form.object.brewery.hours.gsub("\n", " | ") %>' data-rating='<%= bs_form.object.brewery.rating %>'
+          <div class='brewery_stop' data-lat='<%= bs_form.object.brewery.latitude %>' data-long='<%= bs_form.object.brewery.longitude %>' data-name='<%= bs_form.object.brewery.name %>' data-website='<%= bs_form.object.brewery.website %>' data-address='<%= bs_form.object.brewery.address %>' data-phone-number='<%= bs_form.object.brewery.phone_number %>' data-hours='<%= bs_form.object.brewery.hours.gsub("\n", " | ") if !bs_form.object.brewery.hours.nil?%>' data-rating='<%= bs_form.object.brewery.rating %>'
             <%= bs_form.hidden_field :brewery_id %>
             <%= bs_form.hidden_field :crawl_id %>
             <h5><%= bs_form.object.brewery.name %></h5>
@@ -51,7 +51,7 @@
       <div id="crawl_location" data-crawl-lat='<%=@crawl.latitude%>' data-crawl-long='<%=@crawl.longitude%>'></div>
       <% if @crawl.brewery_stops.count > 3 %>
         <%= f.fields_for :brewery_stops, @crawl.brewery_stops.order(start_time: :asc)[3..@crawl.brewery_stops.count-1] do |bs_form| %>
-          <div class='brewery_stop' data-lat='<%= bs_form.object.brewery.latitude %>' data-long='<%= bs_form.object.brewery.longitude %>' data-name='<%= bs_form.object.brewery.name %>' data-website='<%= bs_form.object.brewery.website %>' data-address='<%= bs_form.object.brewery.address %>' data-phone-number='<%= bs_form.object.brewery.phone_number %>' data-hours='<%= bs_form.object.brewery.hours %>' data-rating='<%= bs_form.object.brewery.rating %>'
+          <div class='brewery_stop' data-lat='<%= bs_form.object.brewery.latitude %>' data-long='<%= bs_form.object.brewery.longitude %>' data-name='<%= bs_form.object.brewery.name %>' data-website='<%= bs_form.object.brewery.website %>' data-address='<%= bs_form.object.brewery.address %>' data-phone-number='<%= bs_form.object.brewery.phone_number %>' data-hours='<%= bs_form.object.brewery.hours  if !bs_form.object.brewery.hours.nil?%>' data-rating='<%= bs_form.object.brewery.rating %>'
             <%= bs_form.hidden_field :brewery_id %>
             <%= bs_form.hidden_field :crawl_id %>
             <h5><%= bs_form.object.brewery.name %></h5>

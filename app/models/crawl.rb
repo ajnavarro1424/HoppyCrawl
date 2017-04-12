@@ -1,7 +1,9 @@
 class Crawl < ApplicationRecord
 	geocoded_by :address
+	reverse_geocoded_by :latitude, :longitude
 
-	before_validation :geocode
+	after_validation :geocode
+	after_validation :reverse_geocode, if: :invalid_address
 	before_update :update_brew_stops, if: :address_changed?
 
 	belongs_to :user
