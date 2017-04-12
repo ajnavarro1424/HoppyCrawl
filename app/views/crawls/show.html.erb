@@ -1,27 +1,16 @@
 <div class="container" >
-  <div class="row" style="margin-bottom: 20px; text-align:center;">
-    <div class="col-md-3">
+  <div id="crawls_info_div" class="row" style="margin-bottom: 20px; text-align:center;">
 
-
-      <h4>Make A New Crawl</h4>
-
-
-
-      <%= form_tag("/crawls/create") do %>
-        <%= text_field_tag 'address', nil, placeholder: "Enter Location" %>
-        <%= submit_tag 'New Crawl' %>
-      <% end %>
-    </div>
     <%= form_for @crawl do |f| %>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h4><%= f.label :name_your_crawl %></h4>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, placeholder: "Enter Name" %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h4><%= f.label :address %></h4>
-      <%= f.text_field :address %> <!-- Doesn't do anything yet before changing the map location - doesnt update brew stops -->
+      <%= f.text_field :address, placeholder: "Enter Address" %> <!-- Doesn't do anything yet before changing the map location - doesnt update brew stops -->
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <h4><%= f.label :date %></h4>
       <%= f.date_select :date %>
     </div>
@@ -38,7 +27,7 @@
       <div id="crawl_location" data-crawl-lat='<%=@crawl.latitude%>' data-crawl-long='<%=@crawl.longitude%>'></div>
     </div>
     <% else %>
-    <div class="col-md-3">
+    <div id='brew-col-left' class="col-md-3">
       <div id="crawl_location" data-crawl-lat='<%=@crawl.latitude%>' data-crawl-long='<%=@crawl.longitude%>'></div>
 
         <% @crawl.brewery_stops.count>= 3 ? brew_count = 2 : brew_count = 0%>
@@ -50,12 +39,15 @@
             <h5><%= bs_form.object.brewery.name %></h5>
             <%= bs_form.label :start_time %>
             <%= bs_form.time_select :start_time, {:ampm => true, :minute_step => 15} %>
+            <br>
             <%= bs_form.label :end_time %>
             <%= bs_form.time_select :end_time, {:ampm => true, :minute_step => 15}%>
+            <br>
+            <br>
           </div> <!-- End of brewery_stop-->
         <% end %> <!-- End of first 3 brew stops -->
     </div> <!-- End of col 2, col 1 -->
-    <div class="col-md-3">
+    <div id="brew_col_right" class="col-md-3">
       <div id="crawl_location" data-crawl-lat='<%=@crawl.latitude%>' data-crawl-long='<%=@crawl.longitude%>'></div>
       <% if @crawl.brewery_stops.count > 3 %>
         <%= f.fields_for :brewery_stops, @crawl.brewery_stops.order(start_time: :asc)[3..@crawl.brewery_stops.count-1] do |bs_form| %>
@@ -65,17 +57,20 @@
             <h5><%= bs_form.object.brewery.name %></h5>
             <%= bs_form.label :start_time %>
             <%= bs_form.time_select :start_time, {:ampm => true, :minute_step => 15} %>
+            <br>
             <%= bs_form.label :end_time %>
             <%= bs_form.time_select :end_time, {:ampm => true, :minute_step => 15}%>
           </div> <!-- End of brewery_stop -->
+          <br>
         <% end %>
       <% end %>
       <br>
     </div> <!-- End of col 2, col 2 -->
     <% end %>
-    <%= f.submit %>
 
   </div> <!-- end of row 2 -->
+
+  <%= f.submit :id => 'update_crawl_button' %>
 
   <% end %> <!-- end of line 2 -->
 

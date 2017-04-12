@@ -2,8 +2,6 @@ class Crawl < ApplicationRecord
 	geocoded_by :address
 
 	before_validation :geocode
-
-
 	before_update :update_brew_stops
 
 	belongs_to :user
