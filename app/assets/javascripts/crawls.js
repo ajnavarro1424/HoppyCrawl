@@ -21,7 +21,7 @@ function loadAndCreateGMap() {
     infoWindow = new google.maps.InfoWindow();
     //createMarker for current location
     $(".brewery_stop").each(function () {
-      createMarker({'latitude': $(this).data("lat"), 'longitude': $(this).data("long"), 'name': $(this).data("name"), 'website': $(this).data("website"), 'address': $(this).data("address"), 'phone_number': $(this).data("phone-number")})
+      createMarker({'latitude': $(this).data("lat"), 'longitude': $(this).data("long"), 'name': $(this).data("name"), 'website': $(this).data("website"), 'address': $(this).data("address"), 'phone_number': $(this).data("phone-number"), 'hours': $(this).data("hours"), 'rating': $(this).data("rating")})
     })
   }
 }
@@ -48,6 +48,10 @@ function createMarker(place){
         iWindowStr+=place.address
         iWindowStr+="<br>---------------<br>"
         iWindowStr+=place.phone_number
+        iWindowStr+="<br>---------------<br>"
+        iWindowStr+=place.hours
+        iWindowStr+="<br>---------------<br>"
+        iWindowStr+= "Rating: " + place.rating
         infoWindow.setContent(iWindowStr)
         infoWindow.open(map, this); //makes the infoWindow open when clicked
       })
