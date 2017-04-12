@@ -2,7 +2,7 @@ class Crawl < ApplicationRecord
 	geocoded_by :address
 
 	before_validation :geocode
-	before_update :update_brew_stops
+	before_update :update_brew_stops, if: :address_changed?
 
 	belongs_to :user
 
@@ -25,6 +25,7 @@ class Crawl < ApplicationRecord
 		Geocoder.search(address).empty?
 	end
 
+
 	private
 		def add_brew_stops
 			breweries = Brewery.near([latitude, longitude], 2).first(6)
@@ -37,7 +38,6 @@ class Crawl < ApplicationRecord
 			end
 		end
 
-
 		def update_brew_stops
 			brewery_stops.clear #Must be .clear, or it won't work!
 			breweries = Brewery.near([latitude, longitude], 2).first(6)
@@ -48,7 +48,6 @@ class Crawl < ApplicationRecord
 				brewery_stops << bs
 			end
 		end
-
 		#used to prevent geocoding if there are already a lat and long (i.e. if a user did not input an address and used their local location instead)
 		def check_nil_latlng
 			!latitude.nil?&&!longitude.nil?
