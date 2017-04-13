@@ -27,11 +27,12 @@ RSpec.feature "AdminAssigningRoles", type: :feature do
         visit '/'
       end
       And "Admin can see Admin Tools" do
-      expect(page).to have_content "Admin Tools"
+        
+        expect(page).to have_content "Admin Tools"
       end
       And "Admin can click on Admin Tools" do
         click_link "Admin Tools"
-        expect(page).to have_content "Users"
+        expect(page).to have_content "User Roles"
       end
       And "Admin can remove admin role" do
         #the test admin now can click on the Make Admin button, that is specific to the id make_admin_ and refers back to @user:

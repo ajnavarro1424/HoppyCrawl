@@ -5,6 +5,7 @@ namespace :import do
     Brewery.destroy_all
     @client = GooglePlaces::Client.new("AIzaSyBJ54EUBnt0RwAEIaIseMJQV2Dvnhmu_pA")
     sd_breweries = @client.spots_by_query('Breweries in San Diego', :multipage => true) #gets 60 breweries in San Diego
+
     # la_breweries = @client.spots_by_query('Breweries in Los Angeles', :multipage => true)
     # sf_breweries = @client.spots_by_query('Breweries in San Francisco', :multipage => true)
     # mn_breweries = @client.spots_by_query('Breweries in Minneapolis', :multipage => true)
@@ -27,8 +28,9 @@ namespace :import do
         brewery.website = spot.website
         brewery.phone_number = spot.formatted_phone_number
         # We may need to modify the hours column in the brewery table to json form text
-        brewery.hours = spot.opening_hours["weekday_text"].try(:join, "\n")
-        debugger
+        if spot.opening_hours.present?
+          brewery.hours = spot.opening_hours["weekday_text"].try(:join, "\n")
+        end
         brewery.rating = spot.rating
         brewery.save
       end

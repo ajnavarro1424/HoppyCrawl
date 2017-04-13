@@ -30,6 +30,14 @@
 
 // yellow #f7c311
 
+.search_input {
+  margin: 10px 10px 10px 10px;
+}
+
+#crawls_page {
+  background-color: rgba(0,0,0,0.4);
+}
+
 #crawl_map {
   width: 500px;
   height: 500px;
@@ -175,6 +183,11 @@ a:visited{
 
 
 // crawl page index styling all here
+
+#new_crawl_button {
+  font-family: 'Open Sans Condensed';
+  font-size: inherit;
+}
 
 // #crawl_name{
 //   font-size: 2.3rem;

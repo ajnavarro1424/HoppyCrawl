@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/admins/index' => 'admins#index'
   put '/admins/:id' => 'admins#update'
 
+  put '/crawls/:id/make_shareable' => 'crawls#make_shareable'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", registrations: 'registrations'}
 

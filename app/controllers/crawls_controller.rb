@@ -42,6 +42,7 @@ class CrawlsController < ApplicationController
   def create
     @crawl = Crawl.new
     if @crawl.name.blank?
+      @crawl.shareable = false
       @crawl.name = "Default Name"
     else
       @crawl.name = params[:name]
@@ -67,8 +68,20 @@ class CrawlsController < ApplicationController
         format.json { render json: @crawl.errors, status: :unprocessable_entity }
       end
     end
-
   end
+
+  def make_shareable
+    if @crawl.shareable == false
+      @crawl.shareable = true
+      @crawl.save
+    else
+      @crawl.shareable = false
+      @crawl.save
+    end
+    redirect_to '/crawls'
+  end
+
+
 
   # PATCH/PUT /crawls/1
   # PATCH/PUT /crawls/1.json
@@ -79,7 +92,7 @@ class CrawlsController < ApplicationController
         format.json { render :show, status: :ok, location: @crawl }
       else
         format.html { render :edit }
-        format.json { render json: @crawl.errors, status: :unprocessable_entity }
+        format.json { render json: @crawl.errors, status: :unprocessable_entity, notice: 'Crawl failed to update.' }
       end
     end
   end
@@ -119,6 +132,6 @@ class CrawlsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crawl_params
-      params.require(:crawl).permit(:name, :address, :start_time, :end_time, :date, :brewery_stops, brewery_stops_attributes: [:start_time, :end_time, :id, :brewery_id, :crawl_id]) #this won't work if show and create are not in load_and_authorize_resource
+      params.require(:crawl).permit(:name, :address, :start_time, :end_time, :date, :shareable, :brewery_stops, brewery_stops_attributes: [:start_time, :end_time, :id, :brewery_id, :crawl_id]) #this won't work if show and create are not in load_and_authorize_resource
     end
 end
