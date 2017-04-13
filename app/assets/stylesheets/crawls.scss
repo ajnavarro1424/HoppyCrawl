@@ -30,6 +30,14 @@
 
 // yellow #f7c311
 
+.search_input {
+  margin: 10px 10px 10px 10px;
+}
+
+#crawls_page {
+  background-color: rgba(0,0,0,0.4);
+}
+
 #crawl_map {
   width: 500px;
   height: 500px;
@@ -87,6 +95,12 @@
     text-align: center;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 1.8rem;
+}
+
+.modal_button {
+  background-color: #f7c311;
+  color: white;
+  border-radius: 5px;
 }
 
 #age_check {
@@ -168,7 +182,10 @@ a:visited{
 }
 
 
-// crawl page index styling all here
+#new_crawl_button {
+  font-family: 'Open Sans Condensed';
+  font-size: inherit;
+}
 
 // #crawl_name{
 //   font-size: 2.3rem;
@@ -222,8 +239,13 @@ input {
   text-align: center;
 }
 
+#loc_ready {
+  position: relative;
+}
+
 #loading_gif{
-  background-color: transparent;
+  position: absolute;
+  bottom: 2px;
 }
 
 select {
@@ -251,7 +273,32 @@ select {
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: 0px;
+}
+select {
+//  color: #5A91EE;
+}
+//
+// #bg-brew-crawls {
+//   background-color: rgba(0,0,0,0.5);
+//   // padding: 5px 0 0px 0;
+//   display: inline-block;
+//   float: right;
+//   width: 100%
+// }
 
+#update_crawl_button {
+  color: #FFF;
+  // main citrus color//
+  background-color: #f7c311;
+  width: 100px;
+  height: 30px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  position: relative;
+ margin-top: 50px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: 0px;
 }
 
 

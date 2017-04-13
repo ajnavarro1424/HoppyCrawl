@@ -8,7 +8,7 @@ RSpec.feature "Emailers", type: :feature do
         @user = User.create!(email: "bob@bob.com", password: "bobpassword", dob: "1987-05-12" )
         visit '/users/password/new'
         fill_in 'user[email]', with: "bob@bob.com"
-        click_button "Send me reset password instructions"
+        click_button "Send reset email"
 
       end
       And "A reset password email was sent to the correct account" do

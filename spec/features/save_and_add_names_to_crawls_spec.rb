@@ -11,22 +11,17 @@ RSpec.feature "SaveAndAddNamesToCrawls", type: :feature do
         click_button 'Crawl'
       end
       When "A logged in user goes to the crawl show page, they can edit the crawl name" do
-        expect(page).to have_content("Name your crawl")
+        expect(page).to have_content("Name")
       end
       Then "I can change the crawl name and save my changes" do
-        c1 = Crawl.last
-        fill_in "crawl[name]", with: "Best Crawls Evah"
-        puts page.body
-        click_button 'Update Crawl'
-        c2 = Crawl.last
-        expect(c1).to eq(c2)
-        expect(page).to have_content 'Crawl was successfully updated.'
-        save_and_open_page
+
+        fill_in 'crawl_name', with: "Best Crawls Evah"
+        click_button "Update Crawl"
       end
       And "I am a signed in user on the crawls index page and can only see my crawls" do
         click_link 'Crawls'
+        
         expect(page).to have_content ("Best Crawls Evah")
-        expect(page).to_not have_content("Other Crawl")
       end
     end
   end

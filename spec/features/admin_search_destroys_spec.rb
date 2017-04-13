@@ -20,11 +20,11 @@ RSpec.feature "AdminSearchDestroys", type: :feature do
         click_button "Search"
         expect(page).not_to have_content "Search Results"
         # Name or Address Search
-        fill_in "Search by Name or Address:", with: "North Park"
+        fill_in "Search by Name or Address", with: "North Park"
         click_button "Search"
         expect(page).to have_content "Search Results"
         # User id search
-        fill_in "Search by User ID:", with: @admin.id
+        fill_in "Search by User ID", with: @admin.id
         click_button "Search"
         expect(page).to have_content "Search Results"
 

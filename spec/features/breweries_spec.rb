@@ -68,7 +68,7 @@ RSpec.feature "Breweries As Admin", type: :feature do
         fill_in 'Phone number', with: '868-010-9221'
         fill_in 'Description', with: 'test'
         fill_in 'Rating', with: '3'
-        click_button "Update Brewery"
+        click_button "Create Brewery"
       end
       And "I expect to see my edited Brewery" do
         expect(page).to have_content '7-7'

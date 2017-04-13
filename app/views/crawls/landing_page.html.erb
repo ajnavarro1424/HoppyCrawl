@@ -7,11 +7,11 @@
       <p id="age_check">Are you 21 or over?</p>
       <div class="row">
         <div class="col-md-2 col-md-offset-4">
-          <input type="button" onclick="location.href='https://www.youtube.com/watch?v=6-HUgzYPm9g';" value="NO">
+          <input class="modal_button" type="button" onclick="location.href='https://www.youtube.com/watch?v=6-HUgzYPm9g';" value="NO">
         </div>
         <div class="col-md-2">
           <form action="/crawls/age_verified" method="GET">
-            <input id="yesButton" type="submit" name="accepted" value="YES!">
+            <input class="modal_button" type="submit" name="accepted" value="YES!">
           </form>
         </div>
       </div>
@@ -31,9 +31,9 @@
       <div class="main_image">
         <div class="hoptoit">
           <h3 id="hop_text"><span>HOP</span> TO IT!</h3>
-            <h4 id="loc_ready">Finding your location...<%= image_tag 'ball.gif', width: 30, height: 30 %></h4>
+            <h4 id="loc_ready">Finding your location...<%= image_tag 'ball.gif', width: 30, height: 30, id: 'loading_gif' %></h4>
           <%= form_tag("/crawls/create") do %>
-          <%= text_field_tag 'address', nil, placeholder: "Enter Location", :id => 'crawl_field' %>
+          <%= text_field_tag 'address', nil, placeholder: "Enter Location", id: 'crawl_field' %>
           <%= hidden_field_tag 'your_lat', ''  %>
           <%= hidden_field_tag 'your_long', ''  %>
           <br>
