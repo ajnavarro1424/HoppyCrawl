@@ -1,7 +1,8 @@
 // Place all the styles related to the Registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#registrations_new, #sessions_new, #registrations_edit, #passwords_new{
+// vv this is from the body id in the application.html.erb file body tag
+#registrations_new, #sessions_new, #registrations_edit, #passwords_new, #registrations_update{
   background: image-url("edit_reg_page2.png") no-repeat center center fixed;
   background-size: cover;
 }

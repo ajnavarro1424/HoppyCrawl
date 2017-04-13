@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= f.label :dob %>
-    <%=f.date_select :dob, start_year: Date.today.year - 116, end_year: Date.today.year - 21, :id => "dob_select" %>
+    <%=f.date_select :dob, start_year: Date.today.year, end_year: Date.today.year - 100, :id => "dob_select" %>
   </div>
   <br>
 
@@ -30,8 +30,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off", placeholder: "not required", :class => "fields"  %>
+    <%= f.label :new_password %>
+    <%= f.password_field :password, autocomplete: "off", placeholder: "", :class => "fields" %>
     <% if @minimum_password_length %><br>
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
@@ -40,7 +40,7 @@
 
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "not required", :class => "fields" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"", :class => "fields" %>
   </div>
   <br>
 
