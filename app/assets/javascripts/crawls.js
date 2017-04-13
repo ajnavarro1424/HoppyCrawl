@@ -15,7 +15,7 @@ function loadAndCreateGMap() {
     var location = new google.maps.LatLng( $('#crawl_location').data('crawl-lat'), $('#crawl_location').data('crawl-long'))
     map = new google.maps.Map(document.getElementById('crawl_map'), { //makes and puts a new map inside the crawl_map div
       center: location,
-      zoom: 7
+      zoom: 14
     });
 
     infoWindow = new google.maps.InfoWindow();
